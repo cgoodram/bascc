@@ -44,7 +44,16 @@ export default {
   styleResources: {
     scss: ['./assets/scss/*.scss'],
   },
-  plugins: [{ src: 'plugins/owl.js', ssr: false }],
+  plugins: [
+    { src: 'plugins/owl.js', ssr: false },
+    { src: 'plugins/vuelidate', ssr: false },
+  ],
+  recaptcha: {
+    hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
+    siteKey: '6LfLQvUZAAAAANx_upNhXyY_wnKGNpL1EU-tu6z0', // Site key for requests
+    version: 2, // Version
+    size: 'normal', // Size: 'compact', 'normal', 'invisible' (v2)
+  },
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -67,7 +76,12 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     'nuxt-fontawesome',
+    '@nuxtjs/recaptcha',
+    '@nuxtjs/sitemap',
   ],
+  sitemap: {
+    hostname: 'https://bascc.co.uk',
+  },
   fontawesome: {
     imports: [
       {
