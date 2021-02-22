@@ -93,6 +93,7 @@ export default {
       color: white;
     }
   }
+
   .social {
     .nav-link {
       padding: 0.4rem 0.6rem;

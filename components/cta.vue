@@ -6,9 +6,9 @@
           ><h3>{{ ctaText }}</h3></b-col
         >
         <b-col sm="3" class="cta-btn">
-          <button class="btn btn-info" @click="ctaClicked">
+          <router-link to="/contact" class="btn btn-info">
             Get in touch
-          </button>
+          </router-link>
         </b-col>
       </b-row>
     </b-container>
@@ -27,9 +27,9 @@ export default {
     return {}
   },
   methods: {
-    ctaClicked() {
-      alert('cta clicked')
-    },
+    // ctaClicked() {
+    //   alert('cta clicked')
+    // },
   },
 }
 </script>

@@ -14,14 +14,42 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title:
+      'Balanced Air Specialists - Cleanroom Validation and DOP Filter Testing',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content:
+          'Our comprehensive cleanroom validation report describes in detail the raw data acquired from our test results and measurements taken on site.',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'Our comprehensive cleanroom validation report describes in detail the raw data acquired from our test results and measurements taken on site.',
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://bascc.co.uk',
+      },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'Balanced Air Specialists',
+      },
+      {
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'company',
+      },
+      {
+        hid: 'og:locale',
+        property: 'og:locale',
+        content: 'en_GB',
       },
     ],
     link: [
@@ -29,7 +57,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap',
+          'https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap',
       },
     ],
   },
@@ -105,4 +133,8 @@ export default {
   build: {
     // analyze: true,
   },
+  serverMiddleware: [
+    // Server-side redirects
+    '~/middleware/redirects',
+  ],
 }

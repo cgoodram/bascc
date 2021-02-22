@@ -6,38 +6,53 @@ export const state = () => ({
       image: 'cleanroom-validation-small.jpg',
       snippet:
         'BASCC specialise in the testing, validation and certification of cleanrooms to ensure this element of the pharmaceutical process conforms with any MHRA or FDA inspection.',
+      seo: {
+        title: 'Cleanroom Validation Services - Certified Specialists',
+        description:
+          'Cleanroom Validation - All cleanrooms must be validated and certified to operate. We offer cleanroom validation services for all cleanroom environments',
+      },
     },
     {
       label: 'Clean Air Devices',
-      page: '/clean-air-devices',
+      page: '/clean-air-device-qualification',
       image: 'clean-air-devices-small.jpg',
       snippet:
         'BASCC validation engineers can perform all the required routine qualification tests on all types of clean air device equipment.',
+      seo: {
+        title: 'Clean Air Devices - Balanced Air Specialists',
+        description:
+          'BASCC validation engineers can perform all the required routine qualification tests on all types of clean air device equipment.',
+      },
     },
     {
       label: 'KI-Discus Testing',
-      page: '/ki-discus-testing',
+      page: '/ki-discus-operator-protection-test',
       image: 'ki-discus-testing-small.jpg',
       snippet:
         'BAS engineers have been fully trained & are certified to carry out KI Discus operator protection tests in line with BS EN12469.',
+      seo: {
+        title: 'KI Discus Testing - Balanced Air Specialists',
+        description:
+          'BAS engineers have been fully trained & are certified to carry out KI Discus operator protection tests in line with BS EN12469.',
+      },
     },
     {
-      label: 'Healthcare Ventilation Verification',
-      page: '/healthcare-ventilation-verification',
+      label: 'Healthcare Ventilation Verification (HTM-03-01)',
+      page: '/healthcare-ventilation-verification-htm-03-01',
       image: 'healthcare-ventilation-verification-small.jpg',
       snippet:
         'Our specialist engineers are all certified by the City & Guilds (HTM-03) and can provide all your testing requirements for both non-critical & critical environments. ',
     },
     {
-      label: 'UCV Testing',
-      page: '/ucv-testing',
+      label: 'UCV Testing (HTM-03-01)',
+      page: '/ucv-testing-htm-03-01',
       image: 'ucv-testing-small.jpg',
       snippet:
         'We can perform your regular verification testing and servicing to ensure the safe and efficient operation of your UCV system.',
     },
     {
-      label: 'LEV Testing',
-      page: '/lev-testing',
+      label: 'LEV Testing (Local exhaust ventilation)',
+      page: '/lev-testing-local-exhaust-ventilation',
       image: 'lev-testing-small.jpg',
       snippet:
         'Our BOHS P601 certified testing engineers can perform a thorough examination and test your critical LEV system in line with the HSE requirements of Regulation 9 of the Control of Substances Hazardous to Health (COSHH) regulations.',

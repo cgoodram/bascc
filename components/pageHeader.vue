@@ -7,6 +7,9 @@
         >
         <b-col v-if="breadcrumb">
           <ul class="breadcrumb-list">
+            <router-link to="/" class="crumb"
+              ><b-icon-house-fill></b-icon-house-fill
+            ></router-link>
             <li v-for="crumb in breadcrumb" :key="crumb.label" class="crumb">
               <router-link v-if="crumb.url" :to="crumb.url">{{
                 crumb.label
@@ -21,7 +24,11 @@
 </template>
 
 <script>
+import { BIconHouseFill } from 'bootstrap-vue'
 export default {
+  components: {
+    BIconHouseFill,
+  },
   props: {
     title: {
       required: true,
@@ -30,7 +37,7 @@ export default {
     breadcrumb: {
       type: Array,
       default: () => {
-        return [{ label: 'home', url: '/' }]
+        return [{ label: 'home', url: '/', icon: 'b' }]
       },
     },
   },
@@ -49,7 +56,7 @@ export default {
   border-bottom: 5px solid $dblue;
 
   h1 {
-    font-size: 28px;
+    font-size: 24px;
   }
   .breadcrumb-list {
     display: flex;
@@ -62,6 +69,10 @@ export default {
       margin-right: 5px;
       a {
         margin-right: 5px;
+        color: $lblue;
+      }
+      .b-icon {
+        fill: $lblue;
       }
       display: inline-block;
       &:not(:last-child) {

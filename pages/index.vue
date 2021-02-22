@@ -42,6 +42,24 @@ export default {
   data() {
     return {}
   },
+  head: {
+    title:
+      'Balanced Air Specialists - Cleanroom Validation and DOP Filter Testing',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Our comprehensive cleanroom validation report describes in detail the raw data acquired from our test results and measurements taken on site.',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'Our comprehensive cleanroom validation report describes in detail the raw data acquired from our test results and measurements taken on site.',
+      },
+    ],
+  },
 }
 </script>
 

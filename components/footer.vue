@@ -4,11 +4,17 @@
       <b-container>
         <b-row>
           <b-col md="4">
-            <img
+            <!-- <img
               src="/imgs/bascc-logo-white.png"
               class="img-fluid logo-footer"
-            />
-            <p>Balanced Air Specialists - Experts in Cleanroom Validation</p>
+            /> -->
+            <h2>Balanced Air Specialists</h2>
+            <p>Experts in Cleanroom Validation</p>
+            <div class="socialLinks">
+              <a href="#"><img src="/imgs/facebook.svg" /></a>
+              <a href="#"><img src="/imgs/twitter.svg" /></a>
+              <a href="#"><img src="/imgs/linkedin.svg" /></a>
+            </div>
           </b-col>
           <b-col md="4">
             <div class="header">
@@ -61,7 +67,7 @@
     </div>
     <div class="sub-footer">
       <b-container>
-        THis is the bottom text
+        &copy; copyright Balanced Air Specialist {{ new Date().getFullYear() }}
       </b-container>
     </div>
   </footer>
@@ -85,11 +91,13 @@ export default {
 footer {
   color: white;
   font-size: 14px;
-  background-image: radial-gradient(
-    circle farthest-side at 110% 0,
-    #596070,
-    #31353e
-  );
+  // background-image: linear-gradient($dblue 75%, $blue);
+  background: $dblue;
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
   .footer-main {
     padding: 40px 0;
   }
@@ -144,6 +152,14 @@ footer {
       font-size: 18px;
       margin-bottom: 0;
       width: 100%;
+    }
+  }
+  .socialLinks {
+    display: flex;
+    margin-top: 50px;
+    a {
+      width: 50px;
+      margin-right: 20px;
     }
   }
   .sub-footer {

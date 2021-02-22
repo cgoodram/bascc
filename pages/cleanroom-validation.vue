@@ -1,11 +1,10 @@
 <template>
   <div class="page-wrapper">
     <pageHeader
-      title="Cleanroom Validation"
+      :title="getCurrentPageMeta.label"
       :breadcrumb="[
-        { label: 'home', url: '/' },
-        { label: 'services', url: '/services' },
-        { label: 'cleanroom validation', url: null },
+        { label: 'Services', url: '/services' },
+        { label: getCurrentPageMeta.label, url: null },
       ]"
     />
     <div class="page-content">
@@ -138,53 +137,45 @@
         </b-row>
       </b-container>
     </div>
-    <cta cta-text="Get a cleanroom validation quote today" />
+    <cta cta-text="Get in touch today" />
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import {
-  Swiper as SwiperClass,
-  Pagination,
-  Navigation,
-  Mousewheel,
-  Autoplay,
-  EffectFade,
-} from 'swiper/swiper.esm'
-import getAwesomeSwiper from 'vue-awesome-swiper/dist/exporter'
-import 'swiper/swiper-bundle.css'
-import servicesSidebar from '@/components/servicesSidebar.vue'
 import pageHeader from '@/components/pageHeader.vue'
 import cta from '@/components/cta.vue'
-SwiperClass.use([Pagination, Navigation, Mousewheel, Autoplay, EffectFade])
-Vue.use(getAwesomeSwiper(SwiperClass))
-// const { Swiper, SwiperSlide } = getAwesomeSwiper(SwiperClass)
 
 export default {
   name: 'Services',
   components: {
-    servicesSidebar,
-    // Swiper,
-    // SwiperSlide,
     pageHeader,
     cta,
   },
   data() {
+    return {}
+  },
+  computed: {
+    getCurrentPageMeta() {
+      return this.$store.state.services.find(
+        (obj) => obj.page === this.$route.path
+      )
+    },
+  },
+  head() {
     return {
-      swiperOptions: {
-        spaceBetween: 0,
-        centeredSlides: true,
-        loop: true,
-        initialSlide: 0,
-        effect: 'fade',
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: true,
+      title: this.getCurrentPageMeta.seo.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.getCurrentPageMeta.seo.description,
         },
-        speed: 800,
-        grabCursor: false,
-      },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.getCurrentPageMeta.seo.description,
+        },
+      ],
     }
   },
 }

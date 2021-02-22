@@ -1,7 +1,7 @@
 <template>
   <div class="swiper-div">
     <transition name="fade" mode="out-in">
-      <div v-if="swiperLoading" key="swiperLoader" class="swiper-loading">
+      <div v-show="swiperLoading" key="swiperLoader" class="swiper-loading">
         <div class="loader">
           <svg
             id="L9"
@@ -167,8 +167,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.swiper-div {
+  min-height: 460px;
+}
 .swiper-loading {
-  height: 460px;
+  min-height: 460px;
   background: $blue;
   color: white;
   display: flex;
