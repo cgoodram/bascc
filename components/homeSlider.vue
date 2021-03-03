@@ -167,8 +167,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '@/assets/scss/mixins.scss';
 .swiper-div {
   min-height: 460px;
+  @include responsive('sm') {
+    min-height: unset;
+  }
 }
 .swiper-loading {
   min-height: 460px;
@@ -195,6 +199,9 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    @include responsive('sm') {
+      width: 80%;
+    }
     h2 {
       color: white;
       font-size: 3rem;
@@ -202,6 +209,10 @@ export default {
       background: rgba(0, 0, 0, 0.4);
       padding: 10px;
       border-radius: 6px;
+      @include responsive('sm') {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
     }
   }
   img {

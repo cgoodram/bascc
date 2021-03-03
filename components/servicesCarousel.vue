@@ -10,6 +10,11 @@
         :margin="10"
         :lazyload="true"
         :autoplay="false"
+        :responsive="{
+          0: { items: 1, nav: false },
+          600: { items: 3, nav: true },
+          800: { items: 4, nav: true },
+        }"
       >
         <div
           v-for="service in services"

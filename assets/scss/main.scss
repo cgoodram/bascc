@@ -7,6 +7,7 @@ $lblue: #46bccc;
 // $slblue: #46bccc;
 $accent: #997422;
 
+
 /* fade transition */
 .page-enter-active,
 .page-leave-active {
@@ -66,6 +67,14 @@ ol {
   .h2{
     font-size: 1.4rem;
     margin-bottom: 1.4rem;
+  }
+  .main-images{
+    @media (max-width: 767.98px){
+      order: 3;;
+      img{
+      margin-bottom: 1rem;
+      }
+    }
   }
 }
 .title-header-bar{

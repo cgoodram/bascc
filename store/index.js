@@ -72,6 +72,17 @@ export const state = () => ({
         'BASCC certified engineers can periodically test the air quality of your respiratory device to ensure that the control measures you have put in place are delivering the air quality required by BS EN 12021:2014.',
     },
   ],
+  news: [
+    {
+      title: 'This is the title',
+      description:
+        '<p>A word from AstraZeneca</p><quote>Dear All,<br/>Thank you so much for jumping on this so quickly. Your intervention will directly support our combined efforts to deliver 30M doses to the UK population by September as announced in the 10 Downing Street press conference on Sunday.<br/>It is acts like this that make the impossible possible.</quote>',
+      imageUrl: '/imgs/news/astrazeneca.jpg',
+      posted: '16th January 2021',
+      live: true,
+      slug: 'this-is-a-test',
+    },
+  ],
 })
 
 export const mutations = {

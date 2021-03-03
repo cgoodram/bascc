@@ -5,7 +5,7 @@
         <b-col
           ><h1>{{ title }}</h1></b-col
         >
-        <b-col v-if="breadcrumb">
+        <b-col v-if="breadcrumb" class="breadcrumb-wrapper">
           <ul class="breadcrumb-list">
             <router-link to="/" class="crumb"
               ><b-icon-house-fill></b-icon-house-fill
@@ -48,6 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/scss/mixins.scss';
 .pageTitle {
   background: #f5f5f5;
   color: black;
@@ -57,6 +58,11 @@ export default {
 
   h1 {
     font-size: 24px;
+  }
+  .breadcrumb-wrapper {
+    @include responsive('md') {
+      display: none;
+    }
   }
   .breadcrumb-list {
     display: flex;

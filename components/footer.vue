@@ -11,9 +11,17 @@
             <h2>Balanced Air Specialists</h2>
             <p>Experts in Cleanroom Validation</p>
             <div class="socialLinks">
-              <a href="#"><img src="/imgs/facebook.svg" /></a>
-              <a href="#"><img src="/imgs/twitter.svg" /></a>
-              <a href="#"><img src="/imgs/linkedin.svg" /></a>
+              <a
+                href="https://www.facebook.com/balancedairspecialists"
+                target="_blank"
+                ><img src="/imgs/facebook.svg"
+              /></a>
+              <a href="https://twitter.com/balanced_air" target="_blank"
+                ><img src="/imgs/twitter.svg"
+              /></a>
+              <a href="https://www.linkedin.com/company/bascc" target="_blank"
+                ><img src="/imgs/linkedin.svg"
+              /></a>
             </div>
           </b-col>
           <b-col md="4">

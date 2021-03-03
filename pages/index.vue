@@ -64,6 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/scss/mixins.scss';
 .home {
   padding-bottom: 50px;
   .intro {
@@ -78,6 +79,15 @@ export default {
       color: white;
       padding: 40px 0;
       text-align: center;
+      h1 {
+        font-size: 2.4rem;
+      }
+      @include responsive('sm') {
+        padding: 20px 20px;
+        h1 {
+          font-size: 1.8rem;
+        }
+      }
     }
   }
 }

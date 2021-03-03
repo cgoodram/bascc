@@ -8,7 +8,7 @@ export default {
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
    */
-  target: 'static',
+  target: 'server',
   /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
@@ -60,6 +60,9 @@ export default {
           'https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap',
       },
     ],
+  },
+  generate: {
+    // routes: ['latest-news/this-is-a-test'],
   },
   /*
    ** Global CSS
@@ -132,6 +135,13 @@ export default {
    */
   build: {
     // analyze: true,
+  },
+  pageTransition: {
+    name: 'fade',
+    mode: 'out-in',
+    beforeEnter(el) {
+      console.log('Before enter...')
+    },
   },
   serverMiddleware: [
     // Server-side redirects
