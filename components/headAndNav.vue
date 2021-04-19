@@ -18,6 +18,8 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item to="/">Home</b-nav-item>
+            <b-nav-item to="/about">About</b-nav-item>
+            <b-nav-item to="/quality">Quality</b-nav-item>
 
             <!-- <b-nav-item to="/services">Services</b-nav-item> -->
             <b-nav-item-dropdown text="Services">

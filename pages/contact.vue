@@ -53,7 +53,7 @@ import pageHeader from '@/components/pageHeader.vue'
 import contactForm from '@/components/contactForm.vue'
 
 export default {
-  name: 'Services',
+  name: 'Contact',
   components: {
     // servicesSidebar,
     pageHeader,
