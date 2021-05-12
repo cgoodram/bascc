@@ -3,7 +3,7 @@
     <div class="top-bar">
       <b-container class="d-flex justify-content-between">
         <div class="top-brand">
-          <img src="/imgs/bascc-logo.png" class="img-fluid" />
+          <img src="/imgs/bas-logo-dark.svg" class="img-fluid" />
         </div>
         <div class="top-contact">
           <a href="tel:+441942870584">(01942) 870 584</a>
@@ -79,7 +79,9 @@ export default {
   align-items: center;
   .top-brand {
     img {
-      max-height: 70px;
+      max-height: 80px;
+      height: 80px;
+      padding: 0.5rem 0;
     }
   }
   .top-contact {

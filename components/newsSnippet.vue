@@ -5,8 +5,10 @@
         newsPost.title
       }}</router-link>
     </h2>
-    <img :src="`${newsPost.imageUrl}`" class="img-fluid shadow" />
-    <div v-html="newsDescription" />
+    <router-link :to="`/latest-news/${newsPost.slug}`"
+      ><img :src="`${newsPost.imageUrl}`" class="img-fluid shadow"
+    /></router-link>
+    <div class="snippet">{{ newsPost.snippet }}</div>
   </div>
 </template>
 
@@ -28,15 +30,6 @@ export default {
 
   // Example
 
-  computed: {
-    newsDescription() {
-      const description = this.newsPost.description
-      // if (this.condensed) {
-      //   description = this.truncate(description, 20, '...')
-      // }
-      return description
-    },
-  },
   methods: {
     // cant use because of html tags :?
     truncate(str, max, suffix) {
@@ -51,4 +44,16 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.news-item {
+  margin-bottom: 3rem;
+  h2 {
+    a {
+      color: $dblue;
+    }
+  }
+  img {
+    margin: 1rem 0 2rem;
+  }
+}
+</style>

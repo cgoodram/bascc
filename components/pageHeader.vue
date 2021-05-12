@@ -36,9 +36,6 @@ export default {
     },
     breadcrumb: {
       type: Array,
-      default: () => {
-        return [{ label: 'home', url: '/', icon: 'b' }]
-      },
     },
   },
   data() {

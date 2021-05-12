@@ -1,14 +1,15 @@
 <template>
   <div class="page-wrapper">
-    <pageHeader
-      :title="newsPost.title"
-      :breadcrumb="[{ label: 'latest news', url: null }]"
-    />
+    <pageHeader :title="newsPost.title" />
     <div class="page-content">
       <b-container>
         <b-row>
-          <b-col md="9">
-            <img :src="`${newsPost.imageUrl}`" class="img-fluid" />
+          <b-col class="news-item" md="9">
+            <img
+              :src="`${newsPost.imageUrl}`"
+              class="img-fluid news-image shadow"
+            />
+
             <div v-html="newsPost.description" />
           </b-col>
           <b-col md="3" class="contact">
@@ -78,6 +79,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.news-item {
+  margin-bottom: 2rem;
+  .news-image {
+    margin-bottom: 2rem;
+  }
+}
 .main-images {
   margin-bottom: 20px;
 }

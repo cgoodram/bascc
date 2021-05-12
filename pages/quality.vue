@@ -130,7 +130,7 @@ export default {
           name: 'CCN',
         },
         {
-          logo: 'baxter-logo.png',
+          logo: 's2c2-logo.png',
           name: 'Scottish contamination',
         },
       ],
@@ -140,7 +140,7 @@ export default {
           name: 'CHAS',
         },
         {
-          logo: 'constructionline-logo.png',
+          logo: 'constructionline-gold-logo.png',
           name: 'Construction Line',
         },
         {
@@ -154,11 +154,15 @@ export default {
       ],
       training: [
         {
-          logo: 'irish-cleanroom-logo.png',
+          logo: 'bohs-logo.png',
+          name: 'BOHS',
+        },
+        {
+          logo: 'ctcbi-logo.png',
           name: 'CTCB-I',
         },
         {
-          logo: 'sanofi-logo.png',
+          logo: 'cityguilds-logo.png',
           name: 'City & Guilds',
         },
       ],
@@ -197,5 +201,6 @@ export default {
 }
 h2 {
   font-size: 1.2rem;
+  font-weight: bold;
 }
 </style>

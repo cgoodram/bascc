@@ -74,13 +74,15 @@ export const state = () => ({
   ],
   news: [
     {
-      title: 'This is the title',
+      title: 'A word from AZ on the fight against COVID 19',
       description:
-        '<p>A word from AstraZeneca</p><quote>Dear All,<br/>Thank you so much for jumping on this so quickly. Your intervention will directly support our combined efforts to deliver 30M doses to the UK population by September as announced in the 10 Downing Street press conference on Sunday.<br/>It is acts like this that make the impossible possible.</quote>',
-      imageUrl: '/imgs/news/astrazeneca.jpg',
+        '<blockquote><p>Dear All,<br/>Thank you so much for jumping on this so quickly. Your intervention will directly support our combined efforts to deliver 30M doses to the UK population by September as announced in the 10 Downing Street press conference on Sunday.<br/>It is acts like this that make the impossible possible.</p><footer class="blockquote-footer">A word from AstraZeneca</footer></blockquote>',
+      snippet:
+        'Thank you so much for jumping on this so quickly. Your intervention will directly support our combined efforts to deliver 30M doses to the UK population by September as announced in the 10 Downing Street press conference on Sunday.',
+      imageUrl: '/imgs/news/vaccine.jpg',
       posted: '16th January 2021',
       live: true,
-      slug: 'this-is-a-test',
+      slug: 'az-fight-against-covid-19',
     },
   ],
 })
