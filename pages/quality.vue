@@ -24,6 +24,12 @@
                   advice regarding the qualification and routine qualification
                   testing required at their cleanroom facility’s.
                 </p>
+                <p>
+                  BASCC are certified and operate to a BS EN ISO 9001:2015
+                  compliant quality management system to ensure continual
+                  compliance and an external audit is performed on an annual
+                  basis
+                </p>
               </b-col>
               <b-col class="main-images" md="12">
                 <b-row>
@@ -132,6 +138,10 @@ export default {
         {
           logo: 's2c2-logo.png',
           name: 'Scottish contamination',
+        },
+        {
+          logo: 'iso-9001.png',
+          name: 'BS EN ISO 9001:2015 compliant',
         },
       ],
       safety: [

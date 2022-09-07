@@ -62,7 +62,9 @@ export default {
     font-size: 14px;
   }
 }
-/deep/ .owl-carousel {
+</style>
+<style lang="scss">
+.owl-carousel {
   &:hover {
     .owl-nav {
       & button.owl-next,

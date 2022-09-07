@@ -75,6 +75,12 @@ export default {
   styleResources: {
     scss: ['./assets/scss/*.scss'],
   },
+  sass: {
+    implementation: require('sass'),
+  },
+  scss: {
+    implementation: require('sass'),
+  },
   plugins: [
     { src: 'plugins/owl.js', ssr: false },
     { src: 'plugins/vuelidate', ssr: false },

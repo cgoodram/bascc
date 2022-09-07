@@ -20,6 +20,7 @@
     "emailjs-com": "^2.6.4",
     "nuxt": "^2.14.0",
     "nuxt-fontawesome": "^0.4.0",
+    "sass": "^1.54.8",
     "swiper": "^6.1.2",
     "v-owl-carousel": "^1.0.8",
     "vue-awesome-swiper": "^4.1.1",
@@ -35,7 +36,6 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
     "sass-loader": "^9.0.3"
   }
