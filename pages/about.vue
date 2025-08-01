@@ -9,7 +9,6 @@
         <b-row>
           <b-col md="9">
             <!-- <h1 class="title-header-bar">Cleanroom Validation</h1> -->
-
             <b-row>
               <b-col md="12" class="text" order="0">
                 <p>
