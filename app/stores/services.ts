@@ -1,8 +1,22 @@
-export const state = () => ({
-  services: [
+import { defineStore } from 'pinia'
+
+export interface Service {
+  label: string
+  page: string
+  image: string
+  snippet: string
+  seo?: {
+    title: string
+    description: string
+  }
+}
+
+export const useServicesStore = defineStore('services', () => {
+  // State
+  const services = ref<Service[]>([
     {
       label: 'Cleanroom Validation',
-      page: '/cleanroom-validation',
+      page: '/services/cleanroom-validation',
       image: 'cleanroom-validation-small.jpg',
       snippet:
         'BASCC specialise in the testing, validation and certification of cleanrooms to ensure this element of the pharmaceutical process conforms with any MHRA or FDA inspection.',
@@ -14,7 +28,7 @@ export const state = () => ({
     },
     {
       label: 'Clean Air Devices',
-      page: '/clean-air-device-qualification',
+      page: '/services/clean-air-device-qualification',
       image: 'clean-air-devices-small.jpg',
       snippet:
         'BASCC validation engineers can perform all the required routine qualification tests on all types of clean air device equipment.',
@@ -26,7 +40,7 @@ export const state = () => ({
     },
     {
       label: 'KI-Discus Testing',
-      page: '/ki-discus-operator-protection-test',
+      page: '/services/ki-discus-operator-protection-test',
       image: 'ki-discus-testing-small.jpg',
       snippet:
         'BAS engineers have been fully trained & are certified to carry out KI Discus operator protection tests in line with BS EN12469.',
@@ -38,57 +52,81 @@ export const state = () => ({
     },
     {
       label: 'Healthcare Ventilation Verification (HTM-03-01)',
-      page: '/healthcare-ventilation-verification-htm-03-01',
+      page: '/services/healthcare-ventilation-verification-htm-03-01',
       image: 'healthcare-ventilation-verification-small.jpg',
       snippet:
-        'Our specialist engineers are all certified by the City & Guilds (HTM-03) and can provide all your testing requirements for both non-critical & critical environments. ',
+        'Our specialist engineers are all certified by the City & Guilds (HTM-03) and can provide all your testing requirements for both non-critical & critical environments.',
     },
     {
       label: 'UCV Testing (HTM-03-01)',
-      page: '/ucv-testing-htm-03-01',
+      page: '/services/ucv-testing-htm-03-01',
       image: 'ucv-testing-small.jpg',
       snippet:
         'We can perform your regular verification testing and servicing to ensure the safe and efficient operation of your UCV system.',
     },
     {
       label: 'LEV Testing (Local exhaust ventilation)',
-      page: '/lev-testing-local-exhaust-ventilation',
+      page: '/services/lev-testing-local-exhaust-ventilation',
       image: 'lev-testing-small.jpg',
       snippet:
         'Our BOHS P601 certified testing engineers can perform a thorough examination and test your critical LEV system in line with the HSE requirements of Regulation 9 of the Control of Substances Hazardous to Health (COSHH) regulations.',
     },
     {
       label: 'Compressed Air Testing',
-      page: '/compressed-air-testing',
+      page: '/services/compressed-air-testing',
       image: 'compressed-air-testing-small.jpg',
       snippet:
-        'Compressed air is a critical utility used widely throughout the pharmaceutical, Food, or electronics production environments and it is vitally important for quality, health and safety. ',
+        'Compressed air is a critical utility used widely throughout the pharmaceutical, Food, or electronics production environments and it is vitally important for quality, health and safety.',
     },
     {
       label: 'Breathing Air Quality Testing',
-      page: '/breathing-air-quality-testing',
+      page: '/services/breathing-air-quality-testing',
       image: 'breathing-air-quality-testing-small.jpg',
       snippet:
         'BASCC certified engineers can periodically test the air quality of your respiratory device to ensure that the control measures you have put in place are delivering the air quality required by BS EN 12021:2014.',
     },
-  ],
-  news: [
-    {
-      title: 'A word from AZ on the fight against COVID 19',
-      description:
-        '<blockquote><p>Dear All,<br/>Thank you so much for jumping on this so quickly. Your intervention will directly support our combined efforts to deliver 30M doses to the UK population by September as announced in the 10 Downing Street press conference on Sunday.<br/>It is acts like this that make the impossible possible.</p><footer class="blockquote-footer">A word from AstraZeneca</footer></blockquote>',
-      snippet:
-        'Thank you so much for jumping on this so quickly. Your intervention will directly support our combined efforts to deliver 30M doses to the UK population by September as announced in the 10 Downing Street press conference on Sunday.',
-      imageUrl: '/imgs/news/vaccine.jpg',
-      posted: '16th January 2021',
-      live: true,
-      slug: 'az-fight-against-covid-19',
-    },
-  ],
-})
+  ])
 
-export const mutations = {
-  increment(state) {
-    state.counter++
-  },
-}
+  // Getters
+  const getServiceByPage = (page: string) => {
+    return services.value.find(service => service.page === page)
+  }
+
+  const getServicesByCategory = (category: string) => {
+    // You can add category logic here if needed
+    return services.value
+  }
+
+  // Actions
+  const addService = (service: Service) => {
+    services.value.push(service)
+  }
+
+  const updateService = (page: string, updates: Partial<Service>) => {
+    const index = services.value.findIndex(service => service.page === page)
+    if (index !== -1) {
+      services.value[index] = { ...services.value[index], ...updates }
+    }
+  }
+
+  const removeService = (page: string) => {
+    const index = services.value.findIndex(service => service.page === page)
+    if (index !== -1) {
+      services.value.splice(index, 1)
+    }
+  }
+
+  return {
+    // State
+    services: readonly(services),
+    
+    // Getters
+    getServiceByPage,
+    getServicesByCategory,
+    
+    // Actions
+    addService,
+    updateService,
+    removeService
+  }
+})

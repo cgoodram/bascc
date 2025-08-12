@@ -57,18 +57,18 @@
 </template>
 
 <script setup lang="ts">
-// Use Nuxt 4 composables
-const { $fetch } = useNuxtApp()
+import { useServicesStore } from '~/stores'
 
-// Fetch services data
-const { data: services } = await useFetch('/api/services', {
-  default: () => [
-    { label: 'Cleanroom Validation', page: '/services/cleanroom-validation' },
-    { label: 'DOP Filter Testing', page: '/services/dop-filter-testing' },
-    { label: 'Air Balancing', page: '/services/air-balancing' },
-    { label: 'HVAC Commissioning', page: '/services/hvac-commissioning' }
-  ]
-})
+// Use Pinia store
+const servicesStore = useServicesStore()
+
+// Get services from store and convert to dropdown format
+const services = computed(() => 
+  servicesStore.services.map(service => ({
+    label: service.label,
+    to: service.page
+  }))
+)
 </script>
 
 <style lang="scss" scoped>

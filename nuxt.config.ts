@@ -2,7 +2,8 @@ export default defineNuxtConfig({
   // Enable Nuxt UI
   modules: [
     '@nuxt/ui',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@pinia/nuxt'
   ],
 
   // App configuration
