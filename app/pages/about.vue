@@ -5,12 +5,11 @@
       :breadcrumb="[{ label: 'About', url: null }]"
     />
     <div class="page-content">
-      <b-container>
-        <b-row>
-          <b-col md="9">
-            <!-- <h1 class="title-header-bar">Cleanroom Validation</h1> -->
-            <b-row>
-              <b-col md="12" class="text" order="0">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9">
+            <div class="grid grid-cols-1 gap-6">
+              <div class="text">
                 <p>
                   BAS Cleanroom Commissioning LTD are an independent cleanroom
                   and clean air device qualification provider for sectors such
@@ -43,45 +42,43 @@
                   BASCC have been part of some major projects in the recent
                   years and have worked in collaboration with such companies as:
                 </p>
-              </b-col>
+              </div>
 
-              <b-col class="main-images" md="12" order="1">
-                <b-row>
-                  <b-col
+              <div class="main-images">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div
                     v-for="company in companiesList"
                     :key="company.name"
-                    md="3"
+                    class="flex justify-center"
                   >
                     <img
                       :src="`/imgs/logos/${company.logo}`"
                       class="img-fluid shadow-sm logo"
                       :title="company.name"
                     />
-                  </b-col>
-                </b-row>
-              </b-col>
-            </b-row>
-          </b-col>
-          <b-col md="3"><services-sidebar /></b-col>
-        </b-row>
-      </b-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-3">
+            <services-sidebar />
+          </div>
+        </div>
+      </UContainer>
     </div>
-    <!-- <cta cta-text="Get a Compressed Air Test quote" /> -->
   </div>
 </template>
 
 <script>
 import servicesSidebar from '@/components/servicesSidebar.vue'
 import pageHeader from '@/components/pageHeader.vue'
-// import cta from '@/components/cta.vue'
-// import contactForm from '@/components/contactForm.vue'
 
 export default {
   name: 'About',
   components: {
     servicesSidebar,
     pageHeader,
-    // cta,
   },
   data() {
     return {

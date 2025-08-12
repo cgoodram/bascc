@@ -8,17 +8,15 @@
       ]"
     />
     <div class="page-content">
-      <b-container>
-        <b-row>
-          <b-col md="9">
-            <!-- <h1 class="title-header-bar">Cleanroom Validation</h1> -->
-
-            <b-row>
-              <b-col md="12" class="text" order="2">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9">
+            <div class="grid grid-cols-1 gap-6">
+              <div class="text order-2">
                 <p>
                   BASCC validation engineers can perform all the required
                   routine qualification tests on all types of clean air device
-                  equipment. It’s vital for all clean air devices to be
+                  equipment. It's vital for all clean air devices to be
                   routinely tested in line with regulatory standards such as BS
                   5726:2005, BS EN 12469:2000, ISO 14644, to ensure continual
                   compliance, protection of the product &amp; protection of the
@@ -70,7 +68,7 @@
                 <p>
                   <strong
                     >Please contact us should you have any other type of clean
-                    air device that’s not listed above.</strong
+                    air device that's not listed above.</strong
                   >
                 </p>
                 <p>
@@ -88,9 +86,7 @@
                     />Inspection & replacement of all air filters (If required.
                   </li>
                   <li>
-                    <font-awesome-icon
-                      :icon="['fas', 'chevron-right']"
-                    />Airflow velocity verification.
+                    <font-awesome-icon :icon="['fas', 'chevron-right']" />Airflow velocity verification.
                   </li>
                   <li>
                     <font-awesome-icon :icon="['fas', 'chevron-right']" />Light
@@ -123,29 +119,31 @@
                     >
                   </li>
                 </ul>
-              </b-col>
+              </div>
 
-              <b-col class="main-images" md="12" order="1">
-                <b-row>
-                  <b-col md="6">
+              <div class="main-images order-1">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
                     <img
                       src="/imgs/clean-air-device-qualification/1.jpg"
                       class="img-fluid shadow-sm"
                     />
-                  </b-col>
-                  <b-col md="6">
+                  </div>
+                  <div>
                     <img
                       src="/imgs/clean-air-device-qualification/2.jpg"
                       class="img-fluid shadow-sm"
                     />
-                  </b-col>
-                </b-row>
-              </b-col>
-            </b-row>
-          </b-col>
-          <b-col md="3"><services-sidebar /></b-col>
-        </b-row>
-      </b-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-3">
+            <services-sidebar />
+          </div>
+        </div>
+      </UContainer>
     </div>
     <cta cta-text="Get in touch today" />
   </div>

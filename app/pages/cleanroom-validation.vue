@@ -8,13 +8,11 @@
       ]"
     />
     <div class="page-content">
-      <b-container>
-        <b-row>
-          <b-col md="9">
-            <!-- <h1 class="title-header-bar">Cleanroom Validation</h1> -->
-
-            <b-row>
-              <b-col md="12" class="text" order="2">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9">
+            <div class="grid grid-cols-1 gap-6">
+              <div class="text order-2">
                 <p>
                   BASCC specialise in the testing, validation and certification
                   of cleanrooms to ensure this element of the pharmaceutical
@@ -113,29 +111,31 @@
                   manufacturer or designer giving assurances our testing reports
                   are completely unbiased
                 </p>
-              </b-col>
+              </div>
 
-              <b-col class="main-images" md="12" order="1">
-                <b-row>
-                  <b-col md="6">
+              <div class="main-images order-1">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
                     <img
                       src="/imgs/cleanroon-validation/1.jpg"
                       class="img-fluid shadow-sm"
                     />
-                  </b-col>
-                  <b-col md="6">
+                  </div>
+                  <div>
                     <img
                       src="/imgs/cleanroon-validation/2.jpg"
                       class="img-fluid shadow-sm"
                     />
-                  </b-col>
-                </b-row>
-              </b-col>
-            </b-row>
-          </b-col>
-          <b-col md="3"><services-sidebar /></b-col>
-        </b-row>
-      </b-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-3">
+            <services-sidebar />
+          </div>
+        </div>
+      </UContainer>
     </div>
     <cta cta-text="Get in touch today" />
   </div>

@@ -8,13 +8,11 @@
       ]"
     />
     <div class="page-content">
-      <b-container>
-        <b-row>
-          <b-col md="9">
-            <!-- <h1 class="title-header-bar">Cleanroom Validation</h1> -->
-
-            <b-row>
-              <b-col md="12" class="text" order="2">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9">
+            <div class="grid grid-cols-1 gap-6">
+              <div class="text order-2">
                 <p>
                   Our BOHS P601 certified testing engineers can perform a
                   thorough examination and test your critical LEV system in line
@@ -23,8 +21,8 @@
                   measurements taken are compared with the criteria for
                   performance for ventilation systems given in HSG258
                   <em
-                    >“Controlling airborne contaminants at work: A guide to LEV
-                    local exhaust ventilation”</em
+                    >"Controlling airborne contaminants at work: A guide to LEV
+                    local exhaust ventilation"</em
                   >.
                 </p>
                 <p>
@@ -63,26 +61,28 @@
 
                 <p>
                   On completion of all testing a detailed test report for each
-                  LEV system will be prepared confirming whether the LEV is ‘Fit
-                  for Purpose’ or if remedial works are required.
+                  LEV system will be prepared confirming whether the LEV is 'Fit
+                  for Purpose' or if remedial works are required.
                 </p>
-              </b-col>
+              </div>
 
-              <b-col class="main-images" md="12" order="1">
-                <b-row>
-                  <b-col md="12">
+              <div class="main-images order-1">
+                <div class="grid grid-cols-1 gap-4">
+                  <div>
                     <img
                       src="/imgs/lev-testing/1.jpg"
                       class="img-fluid shadow-sm"
                     />
-                  </b-col>
-                </b-row>
-              </b-col>
-            </b-row>
-          </b-col>
-          <b-col md="3"><services-sidebar /></b-col>
-        </b-row>
-      </b-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-3">
+            <services-sidebar />
+          </div>
+        </div>
+      </UContainer>
     </div>
     <cta cta-text="Request an LEV testing quote" />
   </div>

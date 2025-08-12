@@ -5,15 +5,12 @@
       :breadcrumb="[{ label: 'get in touch', url: null }]"
     />
     <div class="page-content">
-      <b-container>
-        <b-row>
-          <b-col md="9">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9">
             <contactForm />
-          </b-col>
-          <b-col md="3" class="contact">
-            <!-- <div class="header">
-              <h2>Contact us</h2>
-            </div> -->
+          </div>
+          <div class="lg:col-span-3 contact">
             <div class="contact-item">
               <h3 class="title">Address:</h3>
               <p>
@@ -38,9 +35,9 @@
                 <a href="tel:+44194270584" target="_blank">(01942) 870 584</a>
               </p>
             </div>
-          </b-col>
-        </b-row>
-      </b-container>
+          </div>
+        </div>
+      </UContainer>
     </div>
     <!-- <cta cta-text="Get in touch today" /> -->
   </div>

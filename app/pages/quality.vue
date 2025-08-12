@@ -5,24 +5,22 @@
       :breadcrumb="[{ label: 'Quality', url: null }]"
     />
     <div class="page-content">
-      <b-container>
-        <b-row>
-          <b-col md="9">
-            <!-- <h1 class="title-header-bar">Cleanroom Validation</h1> -->
-
-            <b-row>
-              <b-col md="12" class="text">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9">
+            <div class="grid grid-cols-1 gap-6">
+              <div class="text">
                 <h2>Quality</h2>
                 <p>
                   At BASCC we are always looking at ways to continually improve
                   the service we provide to our clients and to ensure this BASCC
                   have become Corporate members of all of the recognized
-                  cleanroom contamination society’s within the UK and Ireland.
-                  Being part of these society’s ensures we’re always kept up to
+                  cleanroom contamination society's within the UK and Ireland.
+                  Being part of these society's ensures we're always kept up to
                   date with all the revisions and changes to the relevant
                   standards meaning we can give all of our clients the correct
                   advice regarding the qualification and routine qualification
-                  testing required at their cleanroom facility’s.
+                  testing required at their cleanroom facility's.
                 </p>
                 <p>
                   BASCC are certified and operate to a BS EN ISO 9001:2015
@@ -30,21 +28,26 @@
                   compliance and an external audit is performed on an annual
                   basis
                 </p>
-              </b-col>
-              <b-col class="main-images" md="12">
-                <b-row>
-                  <b-col v-for="company in quality" :key="company.name" md="3">
+              </div>
+              <div class="main-images">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div
+                    v-for="company in quality"
+                    :key="company.name"
+                    class="flex justify-center"
+                  >
                     <img
                       :src="`/imgs/logos/${company.logo}`"
                       class="img-fluid shadow-sm logo"
                       :title="company.name"
                     />
-                  </b-col>
-                </b-row>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col md="12" class="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-6 mt-8">
+              <div class="text">
                 <h2>Health &amp; Safety</h2>
                 <p>
                   Health &amp; Safety is taken very seriously at BASCC and to
@@ -58,21 +61,26 @@
                   Constructionline ensuring all our regulations are robust and
                   working efficiently for both our staff and clients.
                 </p>
-              </b-col>
-              <b-col class="main-images" md="12">
-                <b-row>
-                  <b-col v-for="company in safety" :key="company.name" md="3">
+              </div>
+              <div class="main-images">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div
+                    v-for="company in safety"
+                    :key="company.name"
+                    class="flex justify-center"
+                  >
                     <img
                       :src="`/imgs/logos/${company.logo}`"
                       class="img-fluid shadow-sm logo"
                       :title="company.name"
                     />
-                  </b-col>
-                </b-row>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col md="12" class="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-6 mt-8">
+              <div class="text">
                 <h2>Training</h2>
                 <p>
                   BASCC continually train all of our employees and see training
@@ -89,40 +97,42 @@
                   assurances for the test results provided from our specialist
                   calibrated equipment.
                 </p>
-              </b-col>
-              <b-col class="main-images" md="12">
-                <b-row>
-                  <b-col v-for="company in training" :key="company.name" md="3">
+              </div>
+              <div class="main-images">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div
+                    v-for="company in training"
+                    :key="company.name"
+                    class="flex justify-center"
+                  >
                     <img
                       :src="`/imgs/logos/${company.logo}`"
                       class="img-fluid shadow-sm logo"
                       :title="company.name"
                     />
-                  </b-col>
-                </b-row>
-              </b-col>
-            </b-row>
-          </b-col>
-          <b-col md="3"><services-sidebar /></b-col>
-        </b-row>
-      </b-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-3">
+            <services-sidebar />
+          </div>
+        </div>
+      </UContainer>
     </div>
-    <!-- <cta cta-text="Get a Compressed Air Test quote" /> -->
   </div>
 </template>
 
 <script>
 import servicesSidebar from '@/components/servicesSidebar.vue'
 import pageHeader from '@/components/pageHeader.vue'
-// import cta from '@/components/cta.vue'
-// import contactForm from '@/components/contactForm.vue'
 
 export default {
   name: 'About',
   components: {
     servicesSidebar,
     pageHeader,
-    // cta,
   },
   data() {
     return {

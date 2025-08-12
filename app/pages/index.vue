@@ -1,40 +1,91 @@
 <template>
-  <div class="home pb-12">
-    <div class="welcome flex flex-col-reverse overflow-hidden">
-      <div class="bannerIntro bg-[var(--color-dblue)] text-white py-10 text-center sm:py-5 sm:px-5">
-        <h1 class="text-4xl sm:text-2xl">Balanced Air Specialists - Experts in Cleanroom Validation</h1>
-      </div>
-      <HomeCarousel />
+  <div class="page-wrapper">
+    <homeCarousel />
+    <div class="page-content">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9">
+            <div class="grid grid-cols-1 gap-6">
+              <div class="text">
+                <h1>Welcome to BAS Cleanroom Commissioning</h1>
+                <p>
+                  BAS Cleanroom Commissioning LTD are an independent cleanroom
+                  and clean air device qualification provider for sectors such
+                  as the Pharmaceutical, Semi-Conductor, Aerospace and
+                  Healthcare.
+                </p>
+                <p>
+                  We offer a National, European and Worldwide service and can
+                  validate your cleanroom facilities and localised clean air
+                  devices to confirm that your cleanroom or clean air device is
+                  operating in compliance with all the current regulatory
+                  cleanroom standards (ISO/BS/EN/NSF).
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-3">
+            <services-sidebar />
+          </div>
+        </div>
+      </UContainer>
     </div>
-    
-    <UContainer>
-      <div class="intro my-10">
-        <p>
-          HVAC systems are the lifeblood of any clean room, crucial to the
-          operation and production of any pharmaceutical company. Products and
-          processes that benefit from the control of airborne contamination
-          include those in such industries as aerospace, microelectronics,
-          pharmaceuticals, medical devices, healthcare, and food. We offer a
-          vital maintenance service to such facilities which includes Air
-          Handling Unit filters, AHU or terminal HEPA filters, AHU cleaning and
-          sterilization, as well as other aspects covering all parts of HVAC
-          systems.
-        </p>
-      </div>
-      
-      <div class="services">
-        <ServicesCarousel />
-      </div>
-    </UContainer>
   </div>
 </template>
 
-<script setup lang="ts">
-// Components are auto-imported in Nuxt 4
-// No need to manually import or register components
-// SEO will be added back after package installation
+<script>
+import homeCarousel from '@/components/homeCarousel.vue'
+import servicesSidebar from '@/components/servicesSidebar.vue'
+
+export default {
+  name: 'Home',
+  components: {
+    homeCarousel,
+    servicesSidebar,
+  },
+  data() {
+    return {}
+  },
+  head() {
+    return {
+      title: 'BAS Cleanroom Commissioning - Cleanroom Validation and DOP Filter Testing',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'BAS Cleanroom Commissioning LTD are an independent cleanroom and clean air device qualification provider for sectors such as the Pharmaceutical, Semi-Conductor, Aerospace and Healthcare.',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'BAS Cleanroom Commissioning LTD are an independent cleanroom and clean air device qualification provider for sectors such as the Pharmaceutical, Semi-Conductor, Aerospace and Healthcare.',
+        },
+      ],
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-// Minimal custom styles - most styling now handled by Tailwind classes
+.page-wrapper {
+  min-height: 100vh;
+}
+
+.page-content {
+  padding: 2rem 0;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--color-dblue);
+}
+
+.text {
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+}
 </style>

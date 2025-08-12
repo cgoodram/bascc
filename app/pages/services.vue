@@ -1,11 +1,15 @@
 <template>
   <div class="page-wrapper">
-    <b-container>
-      <b-row>
-        <b-col order="2" md="8">Main content for seo</b-col>
-        <b-col order="1" md="4"><services-sidebar /></b-col>
-      </b-row>
-    </b-container>
+    <UContainer>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-8 order-2">
+          Main content for seo
+        </div>
+        <div class="lg:col-span-4 order-1">
+          <services-sidebar />
+        </div>
+      </div>
+    </UContainer>
   </div>
 </template>
 

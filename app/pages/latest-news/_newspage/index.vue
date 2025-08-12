@@ -2,20 +2,17 @@
   <div class="page-wrapper">
     <pageHeader :title="newsPost.title" />
     <div class="page-content">
-      <b-container>
-        <b-row>
-          <b-col class="news-item" md="9">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9 news-item">
             <img
               :src="`${newsPost.imageUrl}`"
               class="img-fluid news-image shadow"
             />
 
             <div v-html="newsPost.description" />
-          </b-col>
-          <b-col md="3" class="contact">
-            <!-- <div class="header">
-              <h2>Contact us</h2>
-            </div> -->
+          </div>
+          <div class="lg:col-span-3 contact">
             <div class="contact-item">
               <h3 class="title">Address:</h3>
               <p>
@@ -40,9 +37,9 @@
                 <a href="tel:+44194270584" target="_blank">(01942) 870 584</a>
               </p>
             </div>
-          </b-col>
-        </b-row>
-      </b-container>
+          </div>
+        </div>
+      </UContainer>
     </div>
     <!-- <cta cta-text="Get in touch today" /> -->
   </div>

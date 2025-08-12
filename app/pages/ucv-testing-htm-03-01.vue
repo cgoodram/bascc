@@ -8,13 +8,11 @@
       ]"
     />
     <div class="page-content">
-      <b-container>
-        <b-row>
-          <b-col md="9">
-            <!-- <h1 class="title-header-bar">Cleanroom Validation</h1> -->
-
-            <b-row>
-              <b-col md="12" class="text" order="2">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9">
+            <div class="grid grid-cols-1 gap-6">
+              <div class="text order-2">
                 <p>
                   Post-operative infection is strongly influenced by the
                   suitability and level of airborne contaminates within an
@@ -184,23 +182,25 @@
                   thus ensuring our clients receive the best possible service
                   giving them confidence in the results found and documented.
                 </p>
-              </b-col>
+              </div>
 
-              <b-col class="main-images" md="12" order="1">
-                <b-row>
-                  <b-col md="12">
+              <div class="main-images order-1">
+                <div class="grid grid-cols-1 gap-4">
+                  <div>
                     <img
                       src="/imgs/ucv-testing/1.jpg"
                       class="img-fluid shadow-sm"
                     />
-                  </b-col>
-                </b-row>
-              </b-col>
-            </b-row>
-          </b-col>
-          <b-col md="3"><services-sidebar /></b-col>
-        </b-row>
-      </b-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-3">
+            <services-sidebar />
+          </div>
+        </div>
+      </UContainer>
     </div>
     <cta cta-text="Get in touch today" />
   </div>

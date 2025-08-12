@@ -8,17 +8,15 @@
       ]"
     />
     <div class="page-content">
-      <b-container>
-        <b-row>
-          <b-col md="9">
-            <!-- <h1 class="title-header-bar">Cleanroom Validation</h1> -->
-
-            <b-row>
-              <b-col md="12" class="text" order="2">
+      <UContainer>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-9">
+            <div class="grid grid-cols-1 gap-6">
+              <div class="text order-2">
                 <p>
                   Compressed air for air fed helmets and masks originates from a
                   compressor system and is filtered in a multistage breathing
-                  air filter. As the air fed helmet or mask wearer’s life and
+                  air filter. As the air fed helmet or mask wearer's life and
                   health depend on the air supplied by the compressor, you
                   should ensure that the air supplied meets the quality
                   requirements in British Standard BS EN 12021:2014. This states
@@ -34,12 +32,12 @@
                   operator is at a suitable standard providing fit for purpose
                   safety equipment for all employees that may work in an
                   environment or carry out a process, which may be hazardous to
-                  the employee’s health. This applies to both abrasive blasting
+                  the employee's health. This applies to both abrasive blasting
                   and paint spraying activities.
                 </p>
                 <p>
                   <strong
-                    >COSHH regulations state that ‘testing should be conducted
+                    >COSHH regulations state that 'testing should be conducted
                     at least once every 3 months</strong
                   >
                 </p>
@@ -61,26 +59,28 @@
                 <p>
                   On completion of all testing a detailed report for each
                   respiratory system will be prepared confirming whether the
-                  equipment is ‘Fit for Purpose’ and complies to the
+                  equipment is 'Fit for Purpose' and complies to the
                   requirements stated in BS EN 12021:2014.
                 </p>
-              </b-col>
+              </div>
 
-              <b-col class="main-images" md="12" order="1">
-                <b-row>
-                  <b-col md="12">
+              <div class="main-images order-1">
+                <div class="grid grid-cols-1 gap-4">
+                  <div>
                     <img
                       src="/imgs/breathing-air-quality-testing/1.jpg"
                       class="img-fluid shadow-sm"
                     />
-                  </b-col>
-                </b-row>
-              </b-col>
-            </b-row>
-          </b-col>
-          <b-col md="3"><services-sidebar /></b-col>
-        </b-row>
-      </b-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-3">
+            <services-sidebar />
+          </div>
+        </div>
+      </UContainer>
     </div>
     <cta cta-text="Get a Compressed Air Test quote" />
   </div>

@@ -11,68 +11,68 @@
       </UContainer>
     </div>
 
-    <UNavigationBar>
+    <nav class="main-navigation">
       <UContainer>
-        <template #left>
-          <UNavigationBarItem to="/">Home</UNavigationBarItem>
-          <UNavigationBarItem to="/about">About</UNavigationBarItem>
-          <UNavigationBarItem to="/quality">Quality</UNavigationBarItem>
-          
-          <UDropdown :items="services">
-            <UNavigationBarItem>
-              Services
-              <template #trailing>
-                <UIcon name="i-heroicons-chevron-down" />
-              </template>
-            </UNavigationBarItem>
-          </UDropdown>
-          
-          <UNavigationBarItem to="/latest-news">Latest News</UNavigationBarItem>
-          <UNavigationBarItem to="/contact">Contact Us</UNavigationBarItem>
-        </template>
+        <UHorizontalNavigation :links="navigationLinks" />
         
-        <template #right>
-          <UNavigationBarItem
+        <div class="social-links">
+          <UButton
             href="https://www.facebook.com/balancedairspecialists"
             target="_blank"
-          >
-            <img src="/imgs/facebook.svg" />
-          </UNavigationBarItem>
-          <UNavigationBarItem 
+            aria-label="Visit our Facebook page"
+            variant="ghost"
+            color="gray"
+            icon="i-simple-icons-facebook"
+          />
+          <UButton 
             href="https://twitter.com/balanced_air" 
             target="_blank"
-          >
-            <img src="/imgs/twitter.svg" />
-          </UNavigationBarItem>
-          <UNavigationBarItem
+            aria-label="Visit our Twitter page"
+            variant="ghost"
+            color="gray"
+            icon="i-simple-icons-twitter"
+          />
+          <UButton
             href="https://www.linkedin.com/company/bascc"
             target="_blank"
-          >
-            <img src="/imgs/linkedin.svg" />
-          </UNavigationBarItem>
-        </template>
+            aria-label="Visit our LinkedIn page"
+            variant="ghost"
+            color="gray"
+            icon="i-simple-icons-linkedin"
+          />
+        </div>
       </UContainer>
-    </UNavigationBar>
+    </nav>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useServicesStore } from '~/stores/services'
 
 // Use Pinia store
 const servicesStore = useServicesStore()
 
-// Get services from store and convert to dropdown format
-const services = computed(() => [
-  servicesStore.services.map(service => ({
-    label: service.label,
-    to: service.page
-  }))
+// Create navigation links with services dropdown
+const navigationLinks = computed(() => [
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Quality', to: '/quality' },
+  {
+    label: 'Services',
+    children: servicesStore.services.map(service => ({
+      label: service.label,
+      to: service.page
+    }))
+  },
+  { label: 'Latest News', to: '/latest-news' },
+  { label: 'Contact Us', to: '/contact' }
 ])
 </script>
 
 <style lang="scss" scoped>
 .top-bar {
+  display: flex;
   align-items: center;
   
   .top-brand {
@@ -96,6 +96,18 @@ const services = computed(() => [
         color: var(--color-lblue);
       }
     }
+  }
+}
+
+.main-navigation {
+  border-top: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--color-gray-200);
+  padding: 1rem 0;
+  
+  .social-links {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
   }
 }
 </style>
