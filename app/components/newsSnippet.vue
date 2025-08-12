@@ -1,59 +1,70 @@
 <template>
   <div class="news-item" :class="{ small: condensed }">
     <h2>
-      <router-link :to="`/latest-news/${newsPost.slug}`">{{
-        newsPost.title
-      }}</router-link>
+      <NuxtLink :to="`/latest-news/${newsPost.slug}`">
+        {{ newsPost.title }}
+      </NuxtLink>
     </h2>
-    <router-link :to="`/latest-news/${newsPost.slug}`"
-      ><img :src="`${newsPost.imageUrl}`" class="img-fluid shadow"
-    /></router-link>
-    <div class="snippet">{{ newsPost.snippet }}</div>
+    <NuxtLink :to="`/latest-news/${newsPost.slug}`">
+      <UCard>
+        <template #header>
+          <img :src="newsPost.imageUrl" class="img-fluid shadow" />
+        </template>
+        <div class="snippet">{{ newsPost.snippet }}</div>
+      </UCard>
+    </NuxtLink>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'NewsSnippet',
-  props: {
-    newsPost: {
-      type: Object,
-      required: true,
-    },
-    condensed: {
-      type: Boolean,
-    },
-  },
-  data() {
-    return {}
-  },
+<script setup lang="ts">
+interface NewsPost {
+  slug: string
+  title: string
+  imageUrl: string
+  snippet: string
+}
 
-  // Example
+interface Props {
+  newsPost: NewsPost
+  condensed?: boolean
+}
 
-  methods: {
-    // cant use because of html tags :?
-    truncate(str, max, suffix) {
-      return str.length < max
-        ? str
-        : `${str.substr(
-            0,
-            str.substr(0, max - suffix.length).lastIndexOf(' ')
-          )}${suffix}`
-    },
-  },
+defineProps<Props>()
+
+// Example utility function (can be moved to composables if needed)
+const truncate = (str: string, max: number, suffix: string) => {
+  return str.length < max
+    ? str
+    : `${str.substr(
+        0,
+        str.substr(0, max - suffix.length).lastIndexOf(' ')
+      )}${suffix}`
 }
 </script>
 
 <style lang="scss" scoped>
 .news-item {
   margin-bottom: 3rem;
+  
   h2 {
     a {
       color: $dblue;
+      text-decoration: none;
+      
+      &:hover {
+        color: $lblue;
+      }
     }
   }
+  
   img {
     margin: 1rem 0 2rem;
+    width: 100%;
+    height: auto;
+  }
+  
+  .snippet {
+    margin-top: 1rem;
   }
 }
 </style>

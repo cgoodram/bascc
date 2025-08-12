@@ -1,207 +1,144 @@
 <template>
   <div class="swiper-div">
-    <transition name="fade" mode="out-in">
-      <div v-show="swiperLoading" key="swiperLoader" class="swiper-loading">
-        <div class="loader">
-          <svg
-            id="L9"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 100 100"
-            enable-background="new 0 0 0 0"
-            xml:space="preserve"
-          >
-            <path
-              fill="#fff"
-              d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50"
+    <UCarousel
+      v-model="currentSlide"
+      :items="slides"
+      :ui="{ 
+        item: 'flex-shrink-0 w-full',
+        container: 'w-full h-[460px] sm:h-auto'
+      }"
+      class="w-full"
+      :autoplay="5000"
+      :loop="true"
+      effect="fade"
+    >
+      <template #item="{ item: slide }">
+        <div class="swiper-slide relative">
+          <div class="banner-text">
+            <h2>{{ slide.title }}</h2>
+            <UButton 
+              :to="slide.link" 
+              color="white" 
+              variant="solid"
+              class="cta"
             >
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="rotate"
-                dur="1s"
-                from="0 50 50"
-                to="360 50 50"
-                repeatCount="indefinite"
-              />
-            </path>
-          </svg>
+              {{ slide.buttonText }}
+            </UButton>
+          </div>
+          <img :src="slide.image" class="w-full h-full object-cover" />
         </div>
-      </div>
-    </transition>
-    <client-only>
-      <swiper
-        v-show="!swiperLoading"
-        ref="swiper"
-        :options="swiperOptions"
-        @ready="handleSwiperReadied"
-      >
-        <swiper-slide>
-          <div class="banner-text">
-            <h2>Unbiased Qualification Testing</h2>
-            <a href="services" class="cta btn-default btn-default--padded"
-              >View our services</a
-            >
-          </div>
-          <img src="/imgs/slider/unbiased-testing.jpg" class="swiper-lazy" />
-        </swiper-slide>
-        <swiper-slide>
-          <div class="banner-text">
-            <h2>Tailored Service packages</h2>
-            <a href="services" class="cta btn-default btn-default--padded"
-              >View our services</a
-            >
-          </div>
-          <img
-            src="/imgs/slider/tailored-service-packages-washed.jpg"
-            class="swiper-lazy"
+      </template>
+      
+      <template #prev="{ onClick }">
+        <UButton
+          color="white"
+          variant="solid"
+          icon="i-heroicons-chevron-left"
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10"
+          @click="onClick"
+        />
+      </template>
+      
+      <template #next="{ onClick }">
+        <UButton
+          color="white"
+          variant="solid"
+          icon="i-heroicons-chevron-right"
+          class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10"
+          @click="onClick"
+        />
+      </template>
+      
+      <template #indicators="{ total, current, goTo }">
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex space-x-2">
+          <UButton
+            v-for="index in total"
+            :key="index"
+            :color="current === index - 1 ? 'white' : 'gray'"
+            variant="solid"
+            size="xs"
+            class="w-3 h-3 rounded-full"
+            @click="goTo(index - 1)"
           />
-        </swiper-slide>
-        <swiper-slide>
-          <div class="banner-text">
-            <h2>Qualified Testing Engineers</h2>
-            <a href="services" class="cta btn-default btn-default--padded"
-              >View our services</a
-            >
-          </div>
-          <img
-            src="/imgs/slider/qualified-testing-engineers.jpg"
-            class="swiper-lazy"
-          />
-        </swiper-slide>
-        <swiper-slide>
-          <div class="banner-text">
-            <h2>State Of The Art Testing Equipment</h2>
-            <a href="services" class="cta btn-default btn-default--padded"
-              >View our services</a
-            >
-          </div>
-          <img
-            src="/imgs/slider/state-of-art-testing.jpg"
-            class="swiper-lazy"
-          />
-        </swiper-slide>
-        <swiper-slide>
-          <div class="banner-text">
-            <h2>UK, Europe &amp; Worldwide Service</h2>
-            <a href="services" class="cta btn-default btn-default--padded"
-              >View our services</a
-            >
-          </div>
-          <img
-            src="/imgs/slider/uk-europe-worldwide-service.jpg"
-            class="swiper-lazy"
-          />
-        </swiper-slide>
-
-        <div slot="pagination" class="swiper-pagination"></div>
-        <div slot="button-prev" class="swiper-button-prev"></div>
-        <div slot="button-next" class="swiper-button-next"></div>
-      </swiper>
-    </client-only>
+        </div>
+      </template>
+    </UCarousel>
   </div>
 </template>
 
-<script>
-import Vue from 'vue'
-import {
-  Swiper as SwiperClass,
-  Pagination,
-  Navigation,
-  Mousewheel,
-  Autoplay,
-  EffectFade,
-} from 'swiper/swiper.esm'
-import getAwesomeSwiper from 'vue-awesome-swiper/dist/exporter'
-import 'swiper/swiper-bundle.css'
-SwiperClass.use([Pagination, Navigation, Mousewheel, Autoplay, EffectFade])
-Vue.use(getAwesomeSwiper(SwiperClass))
-const { Swiper, SwiperSlide } = getAwesomeSwiper(SwiperClass)
-
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-  data() {
-    return {
-      swiperLoading: true,
-      swiperOptions: {
-        spaceBetween: 0,
-        centeredSlides: true,
-        loop: true,
-        initialSlide: 0,
-        lazy: true,
-        effect: 'fade',
-        // autoplay: {
-        //   delay: 5000,
-        //   disableOnInteraction: true,
-        // },
-        speed: 800,
-        grabCursor: false,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-          type: 'bullets',
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      },
-    }
-  },
-  mounted() {
-    // console.log(this.$refs.swiper.$swiper)
-    // this.$refs.swiper.$swiper.autoplay.start()
-    // console.log(this.$refs.swiper.allowTouchMove(false))
-  },
-  methods: {
-    handleSwiperReadied() {
-      this.swiperLoading = false
-    },
-  },
+<script setup lang="ts">
+interface Slide {
+  title: string
+  image: string
+  link: string
+  buttonText: string
 }
+
+// Current slide state
+const currentSlide = ref(0)
+
+// Define slides data
+const slides: Slide[] = [
+  {
+    title: 'Unbiased Qualification Testing',
+    image: '/imgs/slider/unbiased-testing.jpg',
+    link: '/services',
+    buttonText: 'View our services'
+  },
+  {
+    title: 'Tailored Service packages',
+    image: '/imgs/slider/tailored-service-packages-washed.jpg',
+    link: '/services',
+    buttonText: 'View our services'
+  },
+  {
+    title: 'Qualified Testing Engineers',
+    image: '/imgs/slider/qualified-testing-engineers.jpg',
+    link: '/services',
+    buttonText: 'View our services'
+  },
+  {
+    title: 'State Of The Art Testing Equipment',
+    image: '/imgs/slider/state-of-art-testing.jpg',
+    link: '/services',
+    buttonText: 'View our services'
+  },
+  {
+    title: 'UK, Europe & Worldwide Service',
+    image: '/imgs/slider/uk-europe-worldwide-service.jpg',
+    link: '/services',
+    buttonText: 'View our services'
+  }
+]
 </script>
+
 <style lang="scss" scoped>
 @import '@/assets/scss/mixins.scss';
+
 .swiper-div {
   min-height: 460px;
+  
   @include responsive('sm') {
     min-height: unset;
   }
 }
-.swiper-loading {
-  min-height: 460px;
-  background: $blue;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .loader {
-    height: 100px;
-    width: 100px;
-    opacity: 0.5;
-  }
-}
-.swiper-container {
-  max-height: 460px;
-  width: 100%;
-}
+
 .swiper-slide {
   max-height: 540px;
+  position: relative;
+  
   .banner-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    z-index: 10;
+    
     @include responsive('sm') {
       width: 80%;
     }
+    
     h2 {
       color: white;
       font-size: 3rem;
@@ -209,14 +146,23 @@ export default {
       background: rgba(0, 0, 0, 0.4);
       padding: 10px;
       border-radius: 6px;
+      
       @include responsive('sm') {
         font-size: 2rem;
         margin-bottom: 2rem;
       }
     }
+    
+    .cta {
+      font-size: 1.2rem;
+      padding: 0.75rem 1.5rem;
+    }
   }
+  
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 </style>

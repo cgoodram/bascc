@@ -1,89 +1,67 @@
 <template>
   <div class="pageTitle">
-    <b-container>
-      <b-row>
-        <b-col
-          ><h1>{{ title }}</h1></b-col
-        >
-        <b-col v-if="breadcrumb" class="breadcrumb-wrapper">
-          <ul class="breadcrumb-list">
-            <router-link to="/" class="crumb"
-              ><b-icon-house-fill></b-icon-house-fill
-            ></router-link>
-            <li v-for="crumb in breadcrumb" :key="crumb.label" class="crumb">
-              <router-link v-if="crumb.url" :to="crumb.url">{{
-                crumb.label
-              }}</router-link>
-              <span v-else>{{ crumb.label }}</span>
-            </li>
-          </ul>
-        </b-col>
-      </b-row>
-    </b-container>
+    <UContainer>
+      <div class="flex justify-between items-center">
+        <div>
+          <h1>{{ title }}</h1>
+        </div>
+        <div v-if="breadcrumb" class="breadcrumb-wrapper">
+          <UBreadcrumb :links="breadcrumbLinks" />
+        </div>
+      </div>
+    </UContainer>
   </div>
 </template>
 
-<script>
-import { BIconHouseFill } from 'bootstrap-vue'
-export default {
-  components: {
-    BIconHouseFill,
-  },
-  props: {
-    title: {
-      required: true,
-      type: String,
-    },
-    breadcrumb: {
-      type: Array,
-    },
-  },
-  data() {
-    return {}
-  },
+<script setup lang="ts">
+interface BreadcrumbItem {
+  label: string
+  url?: string
 }
+
+interface Props {
+  title: string
+  breadcrumb?: BreadcrumbItem[]
+}
+
+const props = defineProps<Props>()
+
+// Convert breadcrumb to Nuxt UI format
+const breadcrumbLinks = computed(() => {
+  if (!props.breadcrumb) return []
+  
+  const links = [
+    { label: 'Home', to: '/' }
+  ]
+  
+  props.breadcrumb.forEach(item => {
+    if (item.url) {
+      links.push({ label: item.label, to: item.url })
+    } else {
+      links.push({ label: item.label })
+    }
+  })
+  
+  return links
+})
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/mixins.scss';
+
 .pageTitle {
   background: #f5f5f5;
   color: black;
   padding: 30px 0;
-  //   text-align: center;
   border-bottom: 5px solid $dblue;
 
   h1 {
     font-size: 24px;
   }
+  
   .breadcrumb-wrapper {
     @include responsive('md') {
       display: none;
-    }
-  }
-  .breadcrumb-list {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 0;
-    line-height: 30px;
-    font-size: 14px;
-    .crumb {
-      list-style: none;
-      margin-right: 5px;
-      a {
-        margin-right: 5px;
-        color: $lblue;
-      }
-      .b-icon {
-        fill: $lblue;
-      }
-      display: inline-block;
-      &:not(:last-child) {
-        &:after {
-          content: '/';
-          width: 10px;
-        }
-      }
     }
   }
 }

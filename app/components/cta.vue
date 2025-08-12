@@ -1,37 +1,26 @@
 <template>
   <div class="cta">
-    <b-container>
-      <b-row class="justify-content-between">
-        <b-col class="cta-text"
-          ><h3>{{ ctaText }}</h3></b-col
-        >
-        <b-col sm="3" class="cta-btn">
-          <router-link to="/contact" class="btn btn-info">
+    <UContainer>
+      <div class="flex justify-between items-center">
+        <div class="cta-text">
+          <h3>{{ ctaText }}</h3>
+        </div>
+        <div class="cta-btn">
+          <UButton to="/contact" color="blue" variant="solid">
             Get in touch
-          </router-link>
-        </b-col>
-      </b-row>
-    </b-container>
+          </UButton>
+        </div>
+      </div>
+    </UContainer>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    ctaText: {
-      required: true,
-      type: String,
-    },
-  },
-  data() {
-    return {}
-  },
-  methods: {
-    // ctaClicked() {
-    //   alert('cta clicked')
-    // },
-  },
+<script setup lang="ts">
+interface Props {
+  ctaText: string
 }
+
+defineProps<Props>()
 </script>
 
 <style lang="scss" scoped>
@@ -39,11 +28,12 @@ export default {
   background: $dblue;
   color: white;
   padding: 30px 0;
-  //   text-align: center;
   border-bottom: 5px solid $lblue;
+  
   .cta-text {
     flex-grow: 1;
   }
+  
   .cta-btn {
     display: flex;
     justify-content: flex-end;

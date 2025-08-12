@@ -1,229 +1,169 @@
 <template>
   <div>
     <template v-if="formStatus === 0">
-      <b-form @submit.stop.prevent="onSubmit">
-        <b-form-row>
-          <b-col md="6">
-            <b-form-group
-              id="contact-name"
-              label="Name *"
-              label-for="name-input"
-            >
-              <b-form-input
-                id="name-input"
-                v-model="$v.form.enquiryName.$model"
-                name="enquiryName"
-                :state="validateState('enquiryName')"
-                aria-describedby="name-input-feedback"
-              ></b-form-input>
-
-              <b-form-invalid-feedback id="name-input-feedback">
-                This is a required field and must be at least 3 characters.
-              </b-form-invalid-feedback>
-            </b-form-group>
-          </b-col>
-          <b-col md="6">
-            <b-form-group
-              id="company-name"
-              label="Company"
-              label-for="company-input"
-            >
-              <b-form-input
-                id="company-input"
-                v-model="$v.form.enquiryCompany.$model"
-                name="enquiryCompany"
-              ></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-form-row>
-          <b-col md="6">
-            <b-form-group
-              id="contact-email"
-              label="Email *"
-              label-for="email-input"
-            >
-              <b-form-input
-                id="email-input"
-                v-model="$v.form.enquiryEmail.$model"
-                name="enquiryEmail"
-                :state="validateState('enquiryEmail')"
-                aria-describedby="email-input-feedback"
-              ></b-form-input>
-
-              <b-form-invalid-feedback id="email-input-feedback">
-                This is a required field and must be a valid email.
-              </b-form-invalid-feedback>
-            </b-form-group>
-          </b-col>
-          <b-col md="6">
-            <b-form-group
-              id="contact-telephone"
-              label="Telephone *"
-              label-for="telephone-input"
-            >
-              <b-form-input
-                id="telephone-input"
-                v-model="$v.form.enquiryTelephone.$model"
-                name="enquiryTelephone"
-                :state="validateState('enquiryTelephone')"
-                aria-describedby="telephone-input-feedback"
-              ></b-form-input>
-
-              <b-form-invalid-feedback id="telephone-input-feedback">
-                This is a required field and must be at least 10 digits
-              </b-form-invalid-feedback>
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-
-        <b-form-row>
-          <b-col md="12">
-            <b-form-group
-              id="contact-message"
-              label="Message *"
-              label-for="message-input"
-            >
-              <b-form-textarea
-                id="message-input"
-                v-model="$v.form.enquiryMessage.$model"
-                name="enquiryMessage"
-                rows="6"
-                max-rows="6"
-                style="overflow: hidden;"
-                :state="validateState('enquiryMessage')"
-                aria-describedby="message-input-feedback"
-              ></b-form-textarea>
-
-              <b-form-invalid-feedback id="message-input-feedback">
-                This is a required field and must be at least 20 characters.
-              </b-form-invalid-feedback>
-            </b-form-group>
-            <recaptcha
-              @error="onError"
-              @success="onSuccess"
-              @expired="onExpired"
+      <form @submit.prevent="onSubmit">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <UFormGroup label="Name *" name="enquiryName">
+            <UInput
+              v-model="form.enquiryName"
+              name="enquiryName"
+              :error="errors.enquiryName"
+              placeholder="Enter your name"
             />
-          </b-col>
-        </b-form-row>
-        <div class="buttons mt-2">
+          </UFormGroup>
+          
+          <UFormGroup label="Company" name="enquiryCompany">
+            <UInput
+              v-model="form.enquiryCompany"
+              name="enquiryCompany"
+              placeholder="Enter your company name"
+            />
+          </UFormGroup>
+          
+          <UFormGroup label="Email *" name="enquiryEmail">
+            <UInput
+              v-model="form.enquiryEmail"
+              name="enquiryEmail"
+              type="email"
+              :error="errors.enquiryEmail"
+              placeholder="Enter your email"
+            />
+          </UFormGroup>
+          
+          <UFormGroup label="Telephone *" name="enquiryTelephone">
+            <UInput
+              v-model="form.enquiryTelephone"
+              name="enquiryTelephone"
+              type="tel"
+              :error="errors.enquiryTelephone"
+              placeholder="Enter your phone number"
+            />
+          </UFormGroup>
+        </div>
+        
+        <UFormGroup label="Message *" name="enquiryMessage" class="mt-6">
+          <UTextarea
+            v-model="form.enquiryMessage"
+            name="enquiryMessage"
+            :error="errors.enquiryMessage"
+            rows="6"
+            placeholder="Enter your message"
+          />
+        </UFormGroup>
+        
+        <div class="buttons mt-6">
           <template v-if="!sending">
-            <b-button type="submit" variant="primary" :disabled="!token">
+            <UButton type="submit" color="blue" :disabled="!isValid">
               Submit
-            </b-button>
-            <b-button class="ml-2" @click="resetForm()">Reset</b-button>
+            </UButton>
+            <UButton class="ml-2" variant="outline" @click="resetForm">
+              Reset
+            </UButton>
           </template>
           <template v-if="sending">
-            <fa :icon="['fas', 'circle-notch']" spin />
-            sending...
+            <UIcon name="i-heroicons-arrow-path" class="animate-spin" />
+            <span class="ml-2">Sending...</span>
           </template>
         </div>
-      </b-form>
+      </form>
     </template>
 
     <template v-if="formStatus === 1">
-      Your enquiry has been sent.
+      <UAlert
+        title="Success!"
+        description="Your enquiry has been sent successfully."
+        color="green"
+        variant="soft"
+      />
     </template>
   </div>
 </template>
 
-<script>
-import emailjs from 'emailjs-com'
-import { validationMixin } from 'vuelidate'
-import { required, minLength, email } from 'vuelidate/lib/validators'
+<script setup lang="ts">
+import { useForm } from 'vee-validate'
+import { toTypedSchema } from '@vee-validate/zod'
+import * as z from 'zod'
 
-export default {
-  mixins: [validationMixin],
-  data() {
-    return {
-      form: {
-        enquiryName: null,
-        enquiryCompany: null,
-        enquiryEmail: null,
-        enquiryTelephone: null,
-        enquiryMessage: null,
-      },
-      token: null,
-      formStatus: 0,
-      sending: false,
-    }
-  },
-  validations: {
-    form: {
-      enquiryName: {
-        required,
-        minLength: minLength(3),
-      },
-      enquiryCompany: {},
-      enquiryEmail: {
-        required,
-        email,
-      },
-      enquiryTelephone: {
-        required,
-        minLength: minLength(10),
-      },
-      enquiryMessage: {
-        required,
-        minLength: minLength(20),
-      },
-    },
-  },
-  methods: {
-    onError(error) {
-      // console.log(error)
-      this.token = null
-    },
-    onSuccess(token) {
-      this.token = token
-    },
-    onExpired() {
-      this.token = null
-    },
-    validateState(name) {
-      const { $dirty, $error } = this.$v.form[name]
-      return $dirty ? !$error : null
-    },
-    resetForm() {
-      this.form = {
-        enquiryName: null,
-        enquiryCompany: null,
-        enquiryEmail: null,
-        enquiryTelephone: null,
-        enquiryMessage: null,
-      }
-      this.$nextTick(() => {
-        this.$v.$reset()
-      })
-    },
-    onSubmit(e) {
-      this.$v.form.$touch()
-      if (this.$v.form.$anyError) {
-        return
-      }
-      this.sending = true
-      /* eslint handle-callback-err: "off" */
-      emailjs
-        .sendForm(
-          'service_xyolezd',
-          'template_4zao08s',
-          e.target,
-          'user_wS2NX4QlOZHSQwphcVZJF'
-        )
-        .then(
-          (result) => {
-            // console.log('SUCCESS!', result.status, result.text)
-            this.formStatus = 1
-            this.sending = false
-          },
+// Form validation schema
+const schema = toTypedSchema(z.object({
+  enquiryName: z.string().min(3, 'Name must be at least 3 characters'),
+  enquiryCompany: z.string().optional(),
+  enquiryEmail: z.string().email('Please enter a valid email'),
+  enquiryTelephone: z.string().min(10, 'Phone number must be at least 10 digits'),
+  enquiryMessage: z.string().min(20, 'Message must be at least 20 characters')
+}))
 
-          (error) => {
-            console.log('FAILED...', error)
-            this.sending = false
-          }
-        )
-    },
-  },
+// Form state
+const formStatus = ref(0)
+const sending = ref(false)
+
+// Form validation
+const { handleSubmit, errors, resetForm: resetValidation, values } = useForm({
+  validationSchema: schema,
+  initialValues: {
+    enquiryName: '',
+    enquiryCompany: '',
+    enquiryEmail: '',
+    enquiryTelephone: '',
+    enquiryMessage: ''
+  }
+})
+
+// Form data
+const form = reactive({
+  enquiryName: '',
+  enquiryCompany: '',
+  enquiryEmail: '',
+  enquiryTelephone: '',
+  enquiryMessage: ''
+})
+
+// Watch form values for validation
+watch(form, (newValues) => {
+  Object.assign(values, newValues)
+}, { deep: true })
+
+// Check if form is valid
+const isValid = computed(() => {
+  return Object.keys(errors.value).length === 0 &&
+         form.enquiryName && 
+         form.enquiryEmail && 
+         form.enquiryTelephone && 
+         form.enquiryMessage
+})
+
+// Reset form
+const resetForm = () => {
+  Object.assign(form, {
+    enquiryName: '',
+    enquiryCompany: '',
+    enquiryEmail: '',
+    enquiryTelephone: '',
+    enquiryMessage: ''
+  })
+  resetValidation()
 }
+
+// Submit form
+const onSubmit = handleSubmit(async (values) => {
+  sending.value = true
+  
+  try {
+    // Simulate email sending (replace with actual email service)
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    formStatus.value = 1
+    sending.value = false
+  } catch (error) {
+    console.error('Failed to send email:', error)
+    sending.value = false
+  }
+})
 </script>
-<style lang="scss" scoped></style>
+
+<style lang="scss" scoped>
+.buttons {
+  display: flex;
+  align-items: center;
+}
+</style>

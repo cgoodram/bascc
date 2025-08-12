@@ -1,104 +1,115 @@
 <template>
   <div class="servicesList">
-    <client-only>
-      <carousel
-        ref="servicesCarousel"
-        :loop="true"
-        :items="4"
-        :dots="false"
-        :nav="true"
-        :margin="10"
-        :lazyload="true"
-        :autoplay="false"
-        :responsive="{
-          0: { items: 1, nav: false },
-          600: { items: 3, nav: true },
-          800: { items: 4, nav: true },
-        }"
-      >
-        <div
-          v-for="service in services"
-          :key="service.page"
-          class="carousel-inner"
-        >
-          <img :src="`/imgs/${service.image}`" />
-          <router-link class="carousel-link" :to="service.page">{{
-            service.label
-          }}</router-link>
-          <p class="snippet">{{ service.snippet }}</p>
+    <UCarousel
+      v-model="currentSlide"
+      :items="services"
+      :ui="{ item: 'flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4' }"
+      class="w-full"
+    >
+      <template #item="{ item: service }">
+        <div class="carousel-inner">
+          <UCard>
+            <template #header>
+              <img :src="`/imgs/${service.image}`" class="w-full h-32 object-cover" />
+            </template>
+            
+            <NuxtLink class="carousel-link" :to="service.page">
+              {{ service.label }}
+            </NuxtLink>
+            
+            <p class="snippet">{{ service.snippet }}</p>
+          </UCard>
         </div>
-      </carousel>
-    </client-only>
+      </template>
+      
+      <template #prev="{ onClick }">
+        <UButton
+          color="white"
+          variant="solid"
+          icon="i-heroicons-chevron-left"
+          class="absolute left-2 top-1/2 transform -translate-y-1/2 z-10"
+          @click="onClick"
+        />
+      </template>
+      
+      <template #next="{ onClick }">
+        <UButton
+          color="white"
+          variant="solid"
+          icon="i-heroicons-chevron-right"
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
+          @click="onClick"
+        />
+      </template>
+    </UCarousel>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ServicesCarousel',
-  data() {
-    return {
-      options: {},
-    }
-  },
-  computed: {
-    services() {
-      return this.$store.state.services
-    },
-  },
+<script setup lang="ts">
+interface Service {
+  label: string
+  page: string
+  image: string
+  snippet: string
 }
+
+// Current slide state
+const currentSlide = ref(0)
+
+// Fetch services data
+const { data: services } = await useFetch('/api/services', {
+  default: () => [
+    { 
+      label: 'Cleanroom Validation', 
+      page: '/services/cleanroom-validation',
+      image: 'cleanroom-validation.jpg',
+      snippet: 'Professional cleanroom validation services'
+    },
+    { 
+      label: 'DOP Filter Testing', 
+      page: '/services/dop-filter-testing',
+      image: 'dop-filter-testing.jpg',
+      snippet: 'Comprehensive DOP filter testing solutions'
+    },
+    { 
+      label: 'Air Balancing', 
+      page: '/services/air-balancing',
+      image: 'air-balancing.jpg',
+      snippet: 'Precise air balancing for optimal performance'
+    },
+    { 
+      label: 'HVAC Commissioning', 
+      page: '/services/hvac-commissioning',
+      image: 'hvac-commissioning.jpg',
+      snippet: 'Expert HVAC commissioning services'
+    }
+  ]
+})
 </script>
 
 <style lang="scss" scoped>
-.carousel-inner {
-  padding: 7.5px;
-  .carousel-link {
-    font-size: 18px;
-    color: $blue;
-    padding-bottom: 10px;
-    padding-top: 5px;
-    display: block;
-  }
-  .snippet {
-    font-size: 14px;
-  }
-}
-</style>
-<style lang="scss">
-.owl-carousel {
-  &:hover {
-    .owl-nav {
-      & button.owl-next,
-      button.owl-prev {
-        // transform: translateX(0);
-        opacity: 1;
+.servicesList {
+  position: relative;
+  
+  .carousel-inner {
+    padding: 7.5px;
+    
+    .carousel-link {
+      font-size: 18px;
+      color: $blue;
+      padding-bottom: 10px;
+      padding-top: 5px;
+      display: block;
+      text-decoration: none;
+      
+      &:hover {
+        color: $lblue;
       }
     }
-  }
-  .owl-nav {
-    position: absolute;
-    top: 10%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    & button.owl-next,
-    button.owl-prev {
-      background: white;
-      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-      width: 40px;
-      height: 40px;
-      opacity: 0.8;
-      transform: translateX(-20px);
-      opacity: 1;
-      transition: 0.3s all ease-in-out;
-      span {
-        color: $blue;
-        font-weight: bold;
-        font-size: 30px;
-        line-height: 30px;
-      }
-    }
-    & button.owl-next {
-      transform: translateX(20px);
+    
+    .snippet {
+      font-size: 14px;
+      margin-top: 0.5rem;
     }
   }
 }

@@ -1,68 +1,50 @@
 <template>
   <div class="sidebar-wrapper">
-    <!-- <div class="header">Services</div> -->
-    <ul class="sidebar">
-      <li
-        v-for="service in services"
-        :key="service.page"
-        class="service-item"
-        :class="{ active: currentUrlPath === service.page }"
-      >
-        <router-link :to="service.page">{{ service.label }}</router-link>
-      </li>
-    </ul>
+    <UCard>
+      <template #header>
+        <h3 class="text-lg font-semibold">Services</h3>
+      </template>
+      
+      <UVerticalNavigation :links="serviceLinks" />
+    </UCard>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ServicesSidebar',
-  data() {
-    return {}
-  },
-  computed: {
-    services() {
-      return this.$store.state.services
-    },
-    currentUrlPath() {
-      return this.$route.path
-    },
-  },
+<script setup lang="ts">
+interface Service {
+  label: string
+  page: string
 }
+
+// Fetch services data
+const { data: services } = await useFetch('/api/services', {
+  default: () => [
+    { label: 'Cleanroom Validation', page: '/services/cleanroom-validation' },
+    { label: 'DOP Filter Testing', page: '/services/dop-filter-testing' },
+    { label: 'Air Balancing', page: '/services/air-balancing' },
+    { label: 'HVAC Commissioning', page: '/services/hvac-commissioning' }
+  ]
+})
+
+// Get current route
+const route = useRoute()
+
+// Convert services to navigation links format
+const serviceLinks = computed(() => {
+  if (!services.value) return []
+  
+  return services.value.map(service => ({
+    label: service.label,
+    to: service.page,
+    active: route.path === service.page
+  }))
+})
 </script>
 
 <style lang="scss" scoped>
 .sidebar-wrapper {
-  .header {
-    font-size: 20px;
-    padding: 5px;
-  }
-  .sidebar {
-    margin: 0;
-    padding: 0;
-    // box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    .service-item {
-      list-style: none;
-      padding: 5px;
-      border-left: 2px solid transparent;
-      font-size: 12px;
-      border-bottom: 1px solid $lblue;
-      cursor: pointer;
-      &:hover,
-      &.active {
-        border-left: 2px solid $blue;
-      }
-      &.active {
-        background: $lblue;
-        a {
-          color: white !important;
-        }
-      }
-      a {
-        text-decoration: none;
-        color: $blue;
-      }
-    }
+  .u-card {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
   }
 }
 </style>
