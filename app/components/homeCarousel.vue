@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper-div">
+  <div class="swiper-div min-h-[460px] sm:min-h-0">
     <UCarousel
       v-model="currentSlide"
       :items="slides"
@@ -13,14 +13,16 @@
       effect="fade"
     >
       <template #item="{ item: slide }">
-        <div class="swiper-slide relative">
-          <div class="banner-text">
-            <h2>{{ slide.title }}</h2>
+        <div class="swiper-slide relative max-h-[540px]">
+          <div class="banner-text absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 w-full sm:w-4/5">
+            <h2 class="text-white text-5xl mb-10 bg-black bg-opacity-40 p-2.5 rounded-md sm:text-3xl sm:mb-8">
+              {{ slide.title }}
+            </h2>
             <UButton 
               :to="slide.link" 
               color="white" 
               variant="solid"
-              class="cta"
+              class="cta text-xl px-6 py-3"
             >
               {{ slide.buttonText }}
             </UButton>
@@ -113,54 +115,9 @@ const slides: Slide[] = [
 </script>
 
 <style lang="scss" scoped>
-.swiper-div {
-  min-height: 460px;
-  
-  @include responsive('sm') {
-    min-height: unset;
-  }
-}
-
-.swiper-slide {
-  max-height: 540px;
-  position: relative;
-  
-  .banner-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-    
-    @include responsive('sm') {
-      width: 80%;
-    }
-    
-    h2 {
-      color: white;
-      font-size: 3rem;
-      margin-bottom: 40px;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 10px;
-      border-radius: 6px;
-      
-      @include responsive('sm') {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-      }
-    }
-    
-    .cta {
-      font-size: 1.2rem;
-      padding: 0.75rem 1.5rem;
-    }
-  }
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+// Minimal custom styles - most styling now handled by Tailwind classes
+.cta {
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
 }
 </style>

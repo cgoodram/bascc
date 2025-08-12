@@ -95,7 +95,7 @@ const services = computed(() => servicesStore.services)
 <style lang="scss" scoped>
 footer {
   color: white;
-  background: $dblue;
+  background: var(--color-dblue);
   
   .footer-main {
     padding: 3rem 0;
@@ -133,7 +133,7 @@ footer {
           text-decoration: none;
           
           &:hover {
-            color: $lblue;
+            color: var(--color-lblue);
           }
         }
       }
@@ -144,7 +144,7 @@ footer {
         margin-bottom: 1rem;
         
         .title {
-          color: $lblue;
+          color: var(--color-lblue);
           margin-bottom: 0.5rem;
         }
         
@@ -153,7 +153,7 @@ footer {
           text-decoration: none;
           
           &:hover {
-            color: $lblue;
+            color: var(--color-lblue);
           }
         }
       }
@@ -161,7 +161,7 @@ footer {
   }
   
   .sub-footer {
-    background: darken($dblue, 10%);
+    background: darken(var(--color-dblue), 10%);
     padding: 1rem 0;
     text-align: center;
   }

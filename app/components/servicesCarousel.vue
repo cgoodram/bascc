@@ -69,14 +69,14 @@ const services = computed(() => servicesStore.services)
     
     .carousel-link {
       font-size: 18px;
-      color: $blue;
+      color: var(--color-blue);
       padding-bottom: 10px;
       padding-top: 5px;
       display: block;
       text-decoration: none;
       
       &:hover {
-        color: $lblue;
+        color: var(--color-lblue);
       }
     }
     

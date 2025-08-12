@@ -1,13 +1,19 @@
 <template>
-  <div class="cta">
+  <div class="cta-section">
     <UContainer>
-      <div class="flex justify-between items-center">
+      <div class="cta-content">
         <div class="cta-text">
-          <h3>{{ ctaText }}</h3>
+          <h2>Ready to get started?</h2>
+          <p>Contact us today to discuss your cleanroom validation needs</p>
         </div>
-        <div class="cta-btn">
-          <UButton to="/contact" color="blue" variant="solid">
-            Get in touch
+        <div class="cta-action">
+          <UButton 
+            to="/contact" 
+            color="white" 
+            variant="solid"
+            size="lg"
+          >
+            Get in Touch
           </UButton>
         </div>
       </div>
@@ -16,31 +22,42 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
-  ctaText: string
-}
-
-defineProps<Props>()
+// No props needed for this simple CTA component
 </script>
 
 <style lang="scss" scoped>
-.cta {
-  background: $dblue;
+.cta-section {
+  background: var(--color-dblue);
   color: white;
-  padding: 30px 0;
-  border-bottom: 5px solid $lblue;
+  padding: 3rem 0;
   
-  .cta-text {
-    flex-grow: 1;
-  }
-  
-  .cta-btn {
+  .cta-content {
     display: flex;
-    justify-content: flex-end;
-  }
-
-  h3 {
-    font-size: 28px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .cta-text {
+      h2 {
+        margin: 0 0 1rem 0;
+        font-size: 2rem;
+      }
+      
+      p {
+        margin: 0;
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+    }
+    
+    .cta-action {
+      flex-shrink: 0;
+    }
   }
 }
 </style>

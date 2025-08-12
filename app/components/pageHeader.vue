@@ -1,5 +1,5 @@
 <template>
-  <div class="page-header">
+  <div class="page-header bg-[var(--color-dblue)] text-white py-8">
     <UContainer>
       <div class="header-content">
         <UBreadcrumb :links="breadcrumbLinks" />
@@ -30,12 +30,15 @@ const breadcrumbLinks = computed(() => {
   if (props.parentPage && props.parentTitle) {
     links.push({
       label: props.parentTitle,
-      to: props.parentPage
+      to: props.parentPage,
+      icon: ''
     })
   }
   
   links.push({
-    label: props.title
+    label: props.title,
+    to: '#',
+    icon: ''
   })
   
   return links
@@ -44,16 +47,12 @@ const breadcrumbLinks = computed(() => {
 
 <style lang="scss" scoped>
 .page-header {
-  background: $dblue;
-  color: white;
-  padding: 2rem 0;
-  
   .header-content {
     h1 {
       margin: 0;
       font-size: 2rem;
       
-      @include responsive('sm') {
+      @media (max-width: 640px) {
         font-size: 1.5rem;
       }
     }

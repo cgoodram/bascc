@@ -90,10 +90,10 @@ const services = computed(() =>
     
     a {
       text-decoration: none;
-      color: $dblue;
+      color: var(--color-dblue);
       
       &:hover {
-        color: $lblue;
+        color: var(--color-lblue);
       }
     }
   }

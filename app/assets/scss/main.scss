@@ -1,11 +1,19 @@
 
-// variables
-$blue: #224799;
-$blueWithOpacity: rgba(20,42,90,.7);
-$dblue: #142a5a;
-$lblue: #46bccc;
-// $slblue: #46bccc;
-$accent: #997422;
+// CSS Custom Properties (CSS Variables) - Modern approach
+:root {
+  --color-blue: #224799;
+  --color-blue-with-opacity: rgba(20,42,90,.7);
+  --color-dblue: #142a5a;
+  --color-lblue: #46bccc;
+  --color-accent: #997422;
+}
+
+// Legacy SCSS variables for backward compatibility
+$blue: var(--color-blue);
+$blueWithOpacity: var(--color-blue-with-opacity);
+$dblue: var(--color-dblue);
+$lblue: var(--color-lblue);
+$accent: var(--color-accent);
 
 // mixins
 @mixin responsive($media){
@@ -88,7 +96,7 @@ ol {
     &::before {
       content: counter(li);
       font-weight: bold;
-      color: $dblue;
+      color: var(--color-dblue);
       display: inline-block; 
       width: 1em;
       margin-left: -1em;
@@ -140,7 +148,7 @@ ol {
   &.chevrons{
     svg{
       margin-right: 10px;
-      color: $blue;
+      color: var(--color-blue);
     }
   }
 }
@@ -152,7 +160,7 @@ ol {
     font-size: 1.25em;
     color: #fff;
     padding: 10px;
-    background-color: $dblue;
+    background-color: var(--color-dblue);
     border-radius: 4px;
     &--padded{
         padding: 10px 30px;
@@ -166,7 +174,7 @@ ol {
   width: 50px;
   height: 50px;
   border-radius: 6px;
-  color: $dblue;
+  color: var(--color-dblue);
   opacity: 0;
   transform: translateX(60px);
   transition: 0.3s all ease-in-out;
@@ -199,14 +207,14 @@ ol {
 }
 
 .dropdown-menu {
-  background-color: $dblue;
+  background-color: var(--color-dblue);
   .dropdown-item{
     color: white;
     &:hover{
-      background: $lblue;
+      background: var(--color-lblue);
     }
     &.nuxt-link-active{
-      background: $lblue;
+      background: var(--color-lblue);
     }
   }
 }
@@ -214,7 +222,7 @@ ol {
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 1);
   &:hover{
-      background: $lblue;
+      background: var(--color-lblue);
       color: white;
   }
 }

@@ -1,14 +1,14 @@
 <template>
-  <div class="home">
-    <div class="welcome">
-      <div class="bannerIntro">
-        <h1>Balanced Air Specialists - Experts in Cleanroom Validation</h1>
+  <div class="home pb-12">
+    <div class="welcome flex flex-col-reverse overflow-hidden">
+      <div class="bannerIntro bg-[var(--color-dblue)] text-white py-10 text-center sm:py-5 sm:px-5">
+        <h1 class="text-4xl sm:text-2xl">Balanced Air Specialists - Experts in Cleanroom Validation</h1>
       </div>
       <HomeCarousel />
     </div>
     
     <UContainer>
-      <div class="intro">
+      <div class="intro my-10">
         <p>
           HVAC systems are the lifeblood of any clean room, crucial to the
           operation and production of any pharmaceutical company. Products and
@@ -36,36 +36,5 @@
 </script>
 
 <style lang="scss" scoped>
-.home {
-  padding-bottom: 50px;
-  
-  .intro {
-    margin: 40px 0;
-  }
-  
-  .welcome {
-    display: flex;
-    flex-direction: column-reverse;
-    overflow: hidden;
-    
-    .bannerIntro {
-      background: $dblue;
-      color: white;
-      padding: 40px 0;
-      text-align: center;
-      
-      h1 {
-        font-size: 2.4rem;
-      }
-      
-      @include responsive('sm') {
-        padding: 20px 20px;
-        
-        h1 {
-          font-size: 1.8rem;
-        }
-      }
-    }
-  }
-}
+// Minimal custom styles - most styling now handled by Tailwind classes
 </style>
