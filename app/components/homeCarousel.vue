@@ -113,8 +113,6 @@ const slides: Slide[] = [
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/main.scss';
-
 .swiper-div {
   min-height: 460px;
   

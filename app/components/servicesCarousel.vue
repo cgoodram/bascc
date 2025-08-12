@@ -61,8 +61,6 @@ const services = computed(() => servicesStore.services)
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/main.scss';
-
 .servicesList {
   position: relative;
   

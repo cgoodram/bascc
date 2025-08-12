@@ -36,8 +36,6 @@
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/main.scss';
-
 .home {
   padding-bottom: 50px;
   

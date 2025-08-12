@@ -43,8 +43,6 @@ const breadcrumbLinks = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/main.scss';
-
 .page-header {
   background: $dblue;
   color: white;

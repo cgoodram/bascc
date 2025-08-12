@@ -7,6 +7,40 @@ $lblue: #46bccc;
 // $slblue: #46bccc;
 $accent: #997422;
 
+// mixins
+@mixin responsive($media){
+	@if $media == xs{
+		@media (max-width: 575.98px){
+			@content;
+		}
+	}
+	@else if $media == sm{
+		@media (max-width: 767.98px){
+			@content;
+		}
+	}
+	@else if $media == md{
+		@media (max-width: 991.98px){
+			@content;
+		}
+	}
+	@else if $media == mdLandscape{
+		@media (max-width: 1024px) and (max-height: 768px){
+			@content;
+		}
+	}
+	@else if $media == ipadProPortrait{
+		@media (max-width: 1024px) and (max-height: 1366px){
+			@content;
+		}
+	}
+	@else if $media == lg{
+		@media(max-width: 1199.98px){
+			@content;
+		}
+	}
+}
+
 blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
@@ -21,14 +55,7 @@ blockquote {
       margin: 1rem 0;
   }
 }
-// blockquote:before {
-//   color: #ccc;
-//   content: open-quote;
-//   font-size: 4em;
-//   line-height: 0.1em;
-//   margin-right: 0.25em;
-//   vertical-align: -0.4em;
-// }
+
 blockquote p {
   display: inline;
 }
@@ -48,9 +75,8 @@ html{
 }
 
 body{
-    // font-family: 'Open Sans', sans-serif!important;
     font-family: 'Rubik', sans-serif!important;
-    background: white
+    background: white;
 }
 
 ol {
@@ -59,34 +85,23 @@ ol {
   li{
     counter-increment: li;
     margin-bottom: .5rem;
-  &::before {
-    content: counter(li);
-    font-weight: bold;
-    color: $dblue;
-    display: inline-block; width: 1em;
-    margin-left: -1em}
+    &::before {
+      content: counter(li);
+      font-weight: bold;
+      color: $dblue;
+      display: inline-block; 
+      width: 1em;
+      margin-left: -1em;
+    }
   }
 }
 
 .card{
     background: white;
-  border-radius: 6px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
-// .title-header{
-//     font-size: 22px;
-//     margin-bottom:20px;
-//     &:before{
-//         position: absolute;
-//         content: "";
-//         left: 0;
-//         bottom: 0;
-//         height: 2px;
-//         width: 50px;
-//         background: $blue;;
-//     }
-// }
 .page-content{
   padding: 20px 0;
   .h2{
@@ -95,13 +110,14 @@ ol {
   }
   .main-images{
     @media (max-width: 767.98px){
-      order: 3;;
+      order: 3;
       img{
-      margin-bottom: 1rem;
+        margin-bottom: 1rem;
       }
     }
   }
 }
+
 .title-header-bar{
     height: 28px;
     line-height: 28px;
@@ -110,11 +126,12 @@ ol {
     font-size: 26px;
     font-weight: bold;
 }
+
 .container{
     max-width: 940px;
     min-height: 0;
-
 }
+
 .no-style{
   list-style: none;
   padding: 0;
@@ -127,6 +144,7 @@ ol {
     }
   }
 }
+
 .btn-default{
     display: inline-block;
     width: auto;
@@ -137,12 +155,11 @@ ol {
     background-color: $dblue;
     border-radius: 4px;
     &--padded{
-        padding:10px 30px;
+        padding: 10px 30px;
     }
 }
 
 /* home slider */
-
 .swiper-button-prev,
 .swiper-button-next {
   background: white;
@@ -154,18 +171,21 @@ ol {
   transform: translateX(60px);
   transition: 0.3s all ease-in-out;
 }
+
 .swiper-container {
   &:hover {
     .swiper-button-prev,
     .swiper-button-next {
       transform: translateX(0);
-      opacity: 0.8
+      opacity: 0.8;
     }
   }
 }
+
 .swiper-button-prev {
   transform: translateX(-60px);
 }
+
 .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
@@ -177,6 +197,7 @@ ol {
     background: rgba(0, 0, 0, 0.5);
   }
 }
+
 .dropdown-menu {
   background-color: $dblue;
   .dropdown-item{
@@ -195,5 +216,5 @@ ol {
   &:hover{
       background: $lblue;
       color: white;
-    }
+  }
 }

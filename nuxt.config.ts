@@ -82,7 +82,7 @@ export default defineNuxtConfig({
   },
 
   // CSS
-  css: ['~/assets/scss/main.scss'],
+  css: ['@/assets/scss/main.scss'],
 
   // Build configuration
   build: {
