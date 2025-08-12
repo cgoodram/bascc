@@ -5,10 +5,13 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build:static": "NODE_ENV=production nuxt generate",
+    "dev": "NODE_ENV=development nuxt dev",
+    "dev:spa": "NODE_ENV=development nuxt dev --spa",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "setup": "node scripts/dev-setup.js",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "typecheck": "nuxt typecheck"

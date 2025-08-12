@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt'
   ],
 
+  // SSR configuration - disabled for development, enabled for production
+  ssr: process.env.NODE_ENV === 'production',
+
   // App configuration
   app: {
     head: {
@@ -102,5 +105,13 @@ export default defineNuxtConfig({
     typeCheck: true
   },
 
+  // Development-specific configuration
+  devtools: { enabled: true },
 
+  // Runtime config for environment-specific settings
+  runtimeConfig: {
+    public: {
+      isDev: process.env.NODE_ENV === 'development'
+    }
+  }
 })
