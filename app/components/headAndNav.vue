@@ -72,7 +72,7 @@ const services = computed(() =>
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/mixins.scss';
+@import '@/assets/scss/main.scss';
 
 .top-bar {
   align-items: center;

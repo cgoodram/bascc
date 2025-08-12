@@ -1,45 +1,41 @@
 <template>
-  <div class="pageTitle">
+  <div class="page-header">
     <UContainer>
-      <div class="flex justify-between items-center">
-        <div>
-          <h1>{{ title }}</h1>
-        </div>
-        <div v-if="breadcrumb" class="breadcrumb-wrapper">
-          <UBreadcrumb :links="breadcrumbLinks" />
-        </div>
+      <div class="header-content">
+        <UBreadcrumb :links="breadcrumbLinks" />
       </div>
     </UContainer>
   </div>
 </template>
 
 <script setup lang="ts">
-interface BreadcrumbItem {
-  label: string
-  url?: string
-}
-
 interface Props {
   title: string
-  breadcrumb?: BreadcrumbItem[]
+  parentPage?: string
+  parentTitle?: string
 }
 
 const props = defineProps<Props>()
 
-// Convert breadcrumb to Nuxt UI format
+// Build breadcrumb links
 const breadcrumbLinks = computed(() => {
-  if (!props.breadcrumb) return []
-  
   const links = [
-    { label: 'Home', to: '/' }
+    {
+      label: 'Home',
+      to: '/',
+      icon: 'i-heroicons-home'
+    }
   ]
   
-  props.breadcrumb.forEach(item => {
-    if (item.url) {
-      links.push({ label: item.label, to: item.url })
-    } else {
-      links.push({ label: item.label })
-    }
+  if (props.parentPage && props.parentTitle) {
+    links.push({
+      label: props.parentTitle,
+      to: props.parentPage
+    })
+  }
+  
+  links.push({
+    label: props.title
   })
   
   return links
@@ -47,21 +43,21 @@ const breadcrumbLinks = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/mixins.scss';
+@import '@/assets/scss/main.scss';
 
-.pageTitle {
-  background: #f5f5f5;
-  color: black;
-  padding: 30px 0;
-  border-bottom: 5px solid $dblue;
-
-  h1 {
-    font-size: 24px;
-  }
+.page-header {
+  background: $dblue;
+  color: white;
+  padding: 2rem 0;
   
-  .breadcrumb-wrapper {
-    @include responsive('md') {
-      display: none;
+  .header-content {
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      
+      @include responsive('sm') {
+        font-size: 1.5rem;
+      }
     }
   }
 }
