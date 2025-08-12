@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="top-bar">
-      <UContainer class="d-flex justify-content-between">
+      <UContainer class="flex justify-between">
         <div class="top-brand">
-          <img src="/imgs/bas-logo-dark.svg" class="img-fluid" />
+          <img src="/imgs/bas-logo-dark.svg" class="w-full h-auto" />
         </div>
         <div class="top-contact">
           <a href="tel:+441942870584">(01942) 870 584</a>
@@ -12,8 +12,8 @@
     </div>
 
     <nav class="main-navigation">
-      <UContainer>
-        <UHorizontalNavigation :links="navigationLinks" />
+      <UContainer class="flex justify-between">
+        <UHorizontalNavigation :links="navigationLinks"  />
         
         <div class="social-links">
           <UButton
@@ -72,8 +72,6 @@ const navigationLinks = computed(() => [
 
 <style lang="scss" scoped>
 .top-bar {
-  display: flex;
-  align-items: center;
   
   .top-brand {
     img {
@@ -85,8 +83,7 @@ const navigationLinks = computed(() => [
   
   .top-contact {
     font-size: 1.6rem;
-    display: flex;
-    align-items: center;
+    @apply flex items-center;
     
     a {
       text-decoration: none;
@@ -103,11 +100,10 @@ const navigationLinks = computed(() => [
   border-top: 1px solid var(--color-gray-200);
   border-bottom: 1px solid var(--color-gray-200);
   padding: 1rem 0;
+  background-color: var(--color-dblue);
   
   .social-links {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    @apply flex gap-2 mt-4;
   }
 }
 </style>
