@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { useServicesStore } from '~/stores'
+import { useServicesStore } from '~/stores/services'
 
 // Get current route
 const route = useRoute()

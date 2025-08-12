@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import { useServicesStore } from '~/stores'
+import { useServicesStore } from '~/stores/services'
 
 // Use Pinia store
 const servicesStore = useServicesStore()

@@ -75,6 +75,7 @@ export default defineNuxtConfig({
 
   // Nitro configuration (replaces generate)
   nitro: {
+    compatibilityDate: '2025-08-12',
     prerender: {
       // Your generate options here
     }
@@ -107,7 +108,7 @@ export default defineNuxtConfig({
   // ESLint
   eslint: {
     config: {
-      extends: ['@nuxtjs/eslint-config']
+      extends: ['@nuxt/eslint-config']
     }
   }
 })

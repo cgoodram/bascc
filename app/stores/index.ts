@@ -1,7 +1,5 @@
-// Export all stores
-export { useServicesStore } from './services'
-export { useNewsStore } from './news'
-
-// Export types
-export type { Service } from './services'
-export type { NewsItem } from './news'
+// This file is not needed in Nuxt 4 as stores are auto-imported
+// The individual store files are automatically available
+// You can import directly from the store files:
+// import { useServicesStore } from '~/stores/services'
+// import { useNewsStore } from '~/stores/news'

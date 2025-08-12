@@ -4,9 +4,10 @@
       <div class="bannerIntro">
         <h1>Balanced Air Specialists - Experts in Cleanroom Validation</h1>
       </div>
-      <homeSlider />
+      <HomeCarousel />
     </div>
-    <b-container>
+    
+    <UContainer>
       <div class="intro">
         <p>
           HVAC systems are the lifeblood of any clean room, crucial to the
@@ -20,70 +21,48 @@
           systems.
         </p>
       </div>
+      
       <div class="services">
-        <!-- <div class="serviceTitle">
-          <h3 class="title-header">Services</h3>
-        </div> -->
-        <services-carousel />
+        <ServicesCarousel />
       </div>
-    </b-container>
+    </UContainer>
   </div>
 </template>
 
-<script>
-import homeSlider from '@/components/homeSlider.vue'
-import servicesCarousel from '@/components/servicesCarousel.vue'
-
-export default {
-  components: {
-    homeSlider,
-    servicesCarousel,
-  },
-  data() {
-    return {}
-  },
-  head: {
-    title:
-      'Balanced Air Specialists - Cleanroom Validation and DOP Filter Testing',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          'Our comprehensive cleanroom validation report describes in detail the raw data acquired from our test results and measurements taken on site.',
-      },
-      {
-        hid: 'og:description',
-        property: 'og:description',
-        content:
-          'Our comprehensive cleanroom validation report describes in detail the raw data acquired from our test results and measurements taken on site.',
-      },
-    ],
-  },
-}
+<script setup lang="ts">
+// Components are auto-imported in Nuxt 4
+// No need to manually import or register components
+// SEO will be added back after package installation
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/scss/mixins.scss';
+
 .home {
   padding-bottom: 50px;
+  
   .intro {
     margin: 40px 0;
   }
+  
   .welcome {
     display: flex;
     flex-direction: column-reverse;
     overflow: hidden;
+    
     .bannerIntro {
       background: $dblue;
       color: white;
       padding: 40px 0;
       text-align: center;
+      
       h1 {
         font-size: 2.4rem;
       }
+      
       @include responsive('sm') {
         padding: 20px 20px;
+        
         h1 {
           font-size: 1.8rem;
         }
