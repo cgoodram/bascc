@@ -57,7 +57,7 @@ const currentSlide = ref(0)
 const servicesStore = useServicesStore()
 
 // Get services from store
-const services = computed(() => servicesStore.services)
+const services = computed(() => [...servicesStore.services])
 </script>
 
 <style lang="scss" scoped>

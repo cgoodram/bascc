@@ -49,7 +49,8 @@ export const useNewsStore = defineStore('news', () => {
   const updateNews = (slug: string, updates: Partial<NewsItem>) => {
     const index = news.value.findIndex(item => item.slug === slug)
     if (index !== -1) {
-      news.value[index] = { ...news.value[index], ...updates }
+      const currentItem = news.value[index]
+      news.value[index] = { ...currentItem, ...updates } as NewsItem
     }
   }
 
@@ -63,7 +64,10 @@ export const useNewsStore = defineStore('news', () => {
   const toggleNewsStatus = (slug: string) => {
     const index = news.value.findIndex(item => item.slug === slug)
     if (index !== -1) {
-      news.value[index].live = !news.value[index].live
+      const currentItem = news.value[index]
+      if (currentItem) {
+        currentItem.live = !currentItem.live
+      }
     }
   }
 

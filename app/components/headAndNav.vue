@@ -63,12 +63,12 @@ import { useServicesStore } from '~/stores/services'
 const servicesStore = useServicesStore()
 
 // Get services from store and convert to dropdown format
-const services = computed(() => 
+const services = computed(() => [
   servicesStore.services.map(service => ({
     label: service.label,
     to: service.page
   }))
-)
+])
 </script>
 
 <style lang="scss" scoped>

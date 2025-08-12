@@ -18,13 +18,15 @@
     "@nuxt/ui": "^2.14.1",
     "@nuxtjs/sitemap": "^5.0.0",
     "@pinia/nuxt": "^0.5.1",
+    "@vee-validate/zod": "^4.15.1",
     "emailjs-com": "^3.2.0",
     "nuxt": "^4.0.0",
     "pinia": "^2.1.7",
     "sass": "^1.71.1",
     "vee-validate": "^4.12.6",
     "vue": "^3.4.0",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.3.0",

@@ -46,7 +46,7 @@
             v-model="form.enquiryMessage"
             name="enquiryMessage"
             :error="errors.enquiryMessage"
-            rows="6"
+            :rows="6"
             placeholder="Enter your message"
           />
         </UFormGroup>
@@ -145,7 +145,7 @@ const resetForm = () => {
 }
 
 // Submit form
-const onSubmit = handleSubmit(async (values) => {
+const onSubmit = handleSubmit(async () => {
   sending.value = true
   
   try {

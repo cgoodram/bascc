@@ -58,8 +58,6 @@ export default defineNuxtConfig({
         },
         { rel: 'manifest', href: '/site.webmanifest' },
         { rel: 'mask-icon', color: '#5bbad5', href: '/safari-pinned-tab.svg' },
-        { name: 'msapplication-TileColor', content: '#2b5797' },
-        { name: 'theme-color', content: '#ffffff' },
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap',
@@ -69,8 +67,8 @@ export default defineNuxtConfig({
   },
 
   // Sitemap configuration
-  sitemap: {
-    hostname: 'https://bascc.co.uk',
+  site: {
+    url: 'https://bascc.co.uk',
   },
 
   // Nitro configuration (replaces generate)
@@ -93,8 +91,7 @@ export default defineNuxtConfig({
   experimental: {
     defaults: {
       useAsyncData: {
-        value: 'null',
-        errorValue: 'null'
+        deep: false
       }
     }
   },
@@ -105,10 +102,5 @@ export default defineNuxtConfig({
     typeCheck: true
   },
 
-  // ESLint
-  eslint: {
-    config: {
-      extends: ['@nuxt/eslint-config']
-    }
-  }
+
 })

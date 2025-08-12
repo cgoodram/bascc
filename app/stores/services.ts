@@ -92,7 +92,7 @@ export const useServicesStore = defineStore('services', () => {
     return services.value.find(service => service.page === page)
   }
 
-  const getServicesByCategory = (category: string) => {
+  const getServicesByCategory = (_category: string) => {
     // You can add category logic here if needed
     return services.value
   }
@@ -105,7 +105,8 @@ export const useServicesStore = defineStore('services', () => {
   const updateService = (page: string, updates: Partial<Service>) => {
     const index = services.value.findIndex(service => service.page === page)
     if (index !== -1) {
-      services.value[index] = { ...services.value[index], ...updates }
+      const currentService = services.value[index]
+      services.value[index] = { ...currentService, ...updates } as Service
     }
   }
 
