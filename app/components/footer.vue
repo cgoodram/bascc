@@ -161,7 +161,7 @@ footer {
   }
   
   .sub-footer {
-    background: darken(var(--color-dblue), 10%);
+    background: darken(#142a5a, 10%);
     padding: 1rem 0;
     text-align: center;
   }
