@@ -1,6 +1,6 @@
 <template>
   <div class="page-wrapper">
-    <homeCarousel />
+    <HomeCarousel />
     <div class="page-content">
       <UContainer>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="lg:col-span-3">
-            <services-sidebar />
+            <ServicesSidebar />
           </div>
         </div>
       </UContainer>
@@ -33,37 +33,8 @@
   </div>
 </template>
 
-<script>
-import homeCarousel from '@/components/homeCarousel.vue'
-import servicesSidebar from '@/components/servicesSidebar.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    homeCarousel,
-    servicesSidebar,
-  },
-  data() {
-    return {}
-  },
-  head() {
-    return {
-      title: 'BAS Cleanroom Commissioning - Cleanroom Validation and DOP Filter Testing',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'BAS Cleanroom Commissioning LTD are an independent cleanroom and clean air device qualification provider for sectors such as the Pharmaceutical, Semi-Conductor, Aerospace and Healthcare.',
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: 'BAS Cleanroom Commissioning LTD are an independent cleanroom and clean air device qualification provider for sectors such as the Pharmaceutical, Semi-Conductor, Aerospace and Healthcare.',
-        },
-      ],
-    }
-  },
-}
+<script setup lang="ts">
+// Using Composition API with <script setup> for better TypeScript support
 </script>
 
 <style lang="scss" scoped>
